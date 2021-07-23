@@ -74,6 +74,7 @@ alias catnl='/bin/bat --paging=never'
 alias airgeddon='/usr/bin/airgeddon/airgeddon.sh'
 alias vm='/home/shockz/.config/bin/copy_paste.sh'
 alias tty='/home/shockz/.config/bin/tty.sh'
+alias ch='/usr/bin/chmod +x'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
