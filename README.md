@@ -40,7 +40,9 @@ git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x 
 ```
 
 ## Vista general
-<p align="center"><img src='img/general.png'></p>
+
+![General](https://user-images.githubusercontent.com/67438760/126847865-92514f2c-7dc9-4296-91a1-44840a7c99e3.png)
+
 
 
 ## Utilidades:
