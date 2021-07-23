@@ -191,10 +191,14 @@ function custom(){
     # Fixing burpsuite
     update-alternatives --config java
 
-    echo -e "${cyan} [*] Habilitando copy-paste en vmware ${end}"
+    echo -e "${cyan} [*] Copiando custom scripts ${end}"
     # Script para habilitar copy-paste en vmware
     sudo cp $current_path/scripts/copy_paste.sh $userPath/.config/bin/
     chmod +x $userPath/.config/bin/copy_paste.sh && chown shockz:shockz $userPath/.config/bin/copy_paste.sh
+
+    # Script tty
+    sudo cp $current_path/scripts/tty.sh $userPath/.config/bin/
+    chmod +x $userPath/.config/bin/tty.sh && chown shockz:shockz $userPath/.config/bin/tty.sh
 
     # Configuracion SSH
 	echo -e "${cyan}[+] Aplicando configuracion ssh${end}"
