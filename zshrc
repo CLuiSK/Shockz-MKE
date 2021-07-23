@@ -1,6 +1,13 @@
 
+# Archivo para habilitar copy paste en vmware
 /home/shockz/.config/bin/copy_paste.sh &
+# Fix resdimensionalizacion de vmware
 wmname LG3D 1> /dev/null &
+
+# Fix cursor
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+
 # Fix the Java Problem
 export _JAVA_AWT_WM_NONREPARENTING=1
 
