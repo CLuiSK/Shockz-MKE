@@ -1,65 +1,46 @@
-# MKE
-My Kali Environment (MKE) es un conjuntos de scripts programados en bash que te permite convertir una distribución de Linux en un entorno de trabajo profesional de manera automática (style [s4vitar](https://youtu.be/66IAhBI0bCM)). También te permite personalizar varias utilidades como el estilo del powerlevel10k, el tema de la polybar, etc., de manera que no se configure todo en un solo estilo, sino que el usuario elija ciertas configuraciones según sus preferencias. Además contiene utilidades que considere interesantes o necesarias en caso de ser instalado el máquinas virtuales, diccionarios, herramientas y configuraciones personales.
+# Shockz MKE
+
+Shockz MKE es mi entorno de trabajo profesional enfocado al pentesting y Capture The Flag. Este cuenta con varias utilidades como una estilo personalizado del prompt con powerlevel10k, una diversas barras superiores con ciertas funcionalidad útiles gracias a polybar, etc. Además contiene configuraciones personales, scripts, diccionarios, atajos y herramientas necesarias en caso de ser instalado el máquinas virtuales.
+
+Sientete libre de aprovechar mis scripts o archivos de configuración.
+
+Recuerda que esta hecho para que funcione para mi user especifico así que si quieres usarlo para ti tendrás que editar muchos archivos.
 
 ## Testeado en las siguientes distribuciones de Linux:
-- Kali Linux 2020.4
 - Kali Linux 2021.2
-- Parrot Security 4.10
+- Kali Linux 2020.4
+
+### Características que empleo en mis Kali VM's
+
+* **CPU**
+    * 2 Cores y 2 Threads/core
+* **RAM**
+    * 6GB
+* **VHD**
+    * 80 GB
+* **Particiones**
+    * /home = 40 GB
+    * / = 30 GB
+    * /var = 5 GB
+    * /swap = 4 GB
+    * /temp = 1 GB
 
 ## Instalación:
 > Se recomienda hacer la instalación en una nueva ISO. Si esto no es posible, es decir, si está usando una máquina virtual usada, clonada o preconfigurada, recomiendo hacer una snapshot (instántanea) del estado actual de la máquina, debido a que puede generar problemas y/o conflictos en el transcurso de la instalación. La solución a esto está fuera de mi alcance.
 
-**1)** Clonamos el repositorio:
+
+**1)** Cambiamos al usuario root
 ```
-git clone https://github.com/jmlgomez73/MKE
-cd MKE
-```
-**2)** Dar permisos de ejecución a install.sh
-
-```
-chmod +x install.sh
-```
-
-layout a español.
-
-6GB RAM
-2 cores 2 threads 
-80gb=>{
-
-/home = 45
-/ => 25
-/var 5gb
-/swap 4gb
-/temp 1gb
-}
-
-
-
 sudo su
+```
+**2)** Clonamos el repositorio, damos permisos de ejecución al archivo install.sh y lo ejecutamos
+
+```
 git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x install.sh && ./install.sh
-
-
-# Explicación de las partes del script
-
-La primera parte es para el usuario actual, se instalará todo y se modificará todo para el usuario (no root)
-
-**3a)** Ejecutar la primera parte pasandole 1 como argumento
 ```
-./install.sh 1
-```
-
-La segunda parte es para el usuario root, se instalará todo y se modificará todo para el usuario root, aparte se realizarán configuraciones que requieren permisos de superusuario, ya como mis configuraciones propias, diccionarios, herramientas.
-
-**3a)** Ejecutar la primera parte pasandole 1 como argumento
-```
-sudo ./install.sh 2
-```
-
-> Si ocurre algún "incidente" como un corte de luz o pérdida de conexión a Internet en algún paso, simplemente deberá ejecutar nuevamente en el paso que se estaba realizando.
 
 ## Vista general
 <p align="center"><img src='img/general.png'></p>
-
 
 
 ## Utilidades:
@@ -76,14 +57,15 @@ sudo ./install.sh 2
 - **fzf**: Buscador difuso de línea de comandos de propósito general. Autor: [junegunn](https://github.com/junegunn)
 
 ## Shortcuts (atajos de teclado)
+
 <kbd>Windows</kbd> + <kbd>Enter</kbd> : Abrir la consola (gnome-terminal).  
-<kbd>Windows</kbd> + <kbd>W</kbd> : Cerrar la ventana actual.  
+<kbd>Windows</kbd> + <kbd>W</kbd> : Cerrar la ventana actual.
 <kbd>Windows</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> : Reiniciar la configuración del bspwm.  
 <kbd>Windows</kbd> + <kbd>Alt</kbd> + <kbd>Q</kbd> : Cerrar sesión.  
 <kbd>Windows</kbd> + <kbd>(⬆⬅⬇➡)</kbd> : Moverse por las ventanas en la workspace actual.  
 <kbd>Windows</kbd> + <kbd>D</kbd> : Abrir el Rofi. <kbd>Esc</kbd> para salir.
-<kbd>Windows</kbd> + <kbd>D</kbd> + escribir "thunar": Abrir explorador de archivos (Kali); "caja" (Parrot)
-<kbd>Windows</kbd> + <kbd>(1,2,3,4,5,6,7,8,9,0)</kbd> : Cambiar el workspace.  
+<kbd>Windows</kbd> + <kbd>D</kbd> + escribir ```thunar```: Abrir explorador de archivos.
+<kbd>Windows</kbd> + <kbd>(1,2,3,4,5,6,7,8,9,0)</kbd> : Cambiar el workspace.
 <kbd>Windows</kbd> + <kbd>T</kbd> : Cambiar la ventana actual a modo "terminal" (normal). Nos sirve cuando la ventana está en modo pantalla completa o flotante.  
 <kbd>Windows</kbd> + <kbd>M</kbd> : Cambiar la ventana actual a modo "completo" (no ocupa la polybar). Presione la mismas teclas para volver a modo "terminal" (normal).  
 <kbd>Windows</kbd> + <kbd>F</kbd> : Cambiar la ventana actual a modo pantalla completa (ocupa todo incluyendo la polybar).  
@@ -95,31 +77,69 @@ sudo ./install.sh 2
 <kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>(⬆⬅⬇➡)</kbd> : Mostrar una preselección para luego abrir una ventana (una terminal, Google Chrome, un archivo, etc.). 
 <kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>Space</kbd> para deshacer la preselección.  
 
-## Funcionalidades
+#### Atajos zsh
+
+<kbd>Ctrl</kbd> + <kbd>A</kbd> : Principio de línea
+<kbd>Ctrl</kbd> + <kbd>E</kbd> : final de línea
+<kbd>Ctrl</kbd> + <kbd>L</kbd> :  Limpiar consola
+<kbd>Alt</kbd> + <kbd>Q</kbd> :  Borra toda la línea
+<kbd>Alt</kbd> + <kbd>Backspace</kbd> : Elimina la palabra anterior al cursor
+<kbd>Alt</kbd> + <kbd>D</kbd> :  Elimina la palabra posterior al cursor
+<kbd>Ctrl</kbd> + <kbd>K</kbd> :  Elimina todo lo que hay detrás del cursor
+<kbd>Ctrl</kbd> + <kbd>D</kbd> :  Funciona igual que la tecla suprimir
+<kbd>Ctrl</kbd> + <kbd>U</kbd> :  Elimina la línea entera y la guarda en el framebuffer
+<kbd>Ctrl</kbd> + <kbd>Y</kbd> :  Pega el frambuffer
+
+## Funcionalidades y Atajos
 
 ### Desplegar varias opciones a elegir entre los archivos del directorio actual 
 ```rm **``` + <kbd>Tab</kbd>
 
 ### Autocompletador inteligente de rutas
-si escribimos ```cd /u/s/w``` => al tabular se modifica a ```cd /usr/share/wordlists```
+Si escribimos ```cd /u/s/w``` => al tabular se modifica a ```cd /usr/share/wordlists```
 
-### Búsqueda inteligente
+### Búsqueda inteligente de archivos y directorios
 <kbd>Ctrl</kbd> + <kbd>T</kbd>
 
-### Historico de comandos
+### Búsqueda en el historico de comandos
 <kbd>Ctrl</kbd> + <kbd>R</kbd>
 
+### Listado largo mostrando archivos ocultos
+
+```la```
+### Creacion de una escructura de directorios ideal para tests de instrusiones (Pentest/CTF's)
+
+```mkt```
+### Eliminación profunda de archivos
+
+```rmk```
+### Establecer una IP como objetivo
+
+```settarget <IP>```
+### Limpiar la IP establecida como objetivo
+
+```cleartarget```
 ### Autocompleatador de sudo
 Escribimos un comando y al presionar <kbd>Esc</kbd> + <kbd>Esc</kbd> , apareceria delante del comando "sudo"
 
+### Navegador visual del explorador de archivos
 
-> Tenga en cuenta que cuando nos referimos a la tecla <kbd>Windows</kbd>, esta puede cambiar dependiendo del pointer_modifier seleccionado, que se encuentra en el archivo ~/.config/bspwm/bspwmrc
+```ranger```
+
+### Poner un puerto a la escucha y obtener una reverse shell, posteriormente conseguir acto seguido una shell TTY 100% interactiva
+
+```tty <port>```
+
+#
+
+
+
+
+
+> Ten en cuenta que cuando nos referimos a la tecla <kbd>Windows</kbd>, esta puede cambiar dependiendo del pointer_modifier seleccionado, que se encuentra en el archivo ~/.config/bspwm/bspwmrc
 
 ## Configuración manual:
-- Video by s4vitar: https://www.youtube.com/watch?v=66IAhBI0bCM
 - Editar el código a gusto
 
-## Créditos
-- Autor de la versión modificada y ampliada: jmlgomez73
-- Autor de la version base: leviswings
-- Inspirado en s4vitar
+## Autor
+- Jorge Manuel Lozano Gómez
