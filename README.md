@@ -49,8 +49,8 @@ git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x 
 - **powerlevel10k**: Tema de la zsh. Autor: [romkatv](https://github.com/romkatv)
 - **sxhkd**: Es un "demonio" que escucha los eventos del teclado y ejecuta comandos. Autor: [baskerville](https://github.com/baskerville)
 - **polybar**: Herramienta rápida y fácil de usar para crear barras de estado.
-- **polybar-themes**: Temas para la polybar. Autor: [adi1090x](https://github.com/adi1090x)
-- **compton**: Es un compositor para X y una bifurcación de xcompmgr-dana. Autor: [chjj](https://github.com/chjj)
+- **polybar-themes**: Temas para la polybar. Autor: [VaughnValle](https://github.com/VaughnValle)
+- **picom**: Es un compositor para X11. Autor: [yshui](https://github.com/yshui)
 - **rofi**: Selector de ventana y lanzador de aplicaciones.
 - **feh**: Visor de imágenes ligero, configurable y versátil.
 - **Hack Nerd Font**: Fuente.
@@ -131,10 +131,6 @@ Escribimos un comando y al presionar <kbd>Esc</kbd> + <kbd>Esc</kbd> , apareceri
 ```tty <port>```
 
 #
-
-
-
-
 
 > Ten en cuenta que cuando nos referimos a la tecla <kbd>Windows</kbd>, esta puede cambiar dependiendo del pointer_modifier seleccionado, que se encuentra en el archivo ~/.config/bspwm/bspwmrc
 
