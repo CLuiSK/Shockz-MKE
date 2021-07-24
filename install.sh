@@ -40,6 +40,9 @@ function user_shockz(){
     sudo apt install scrub
     # Instalando wmname
     sudo apt install wmname -y
+    # Instalando xclip
+    sudo apt install xclip -y
+
 
     # Disable sleep/suspend
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
