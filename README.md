@@ -128,7 +128,7 @@ Escribimos un comando y al presionar <kbd>Esc</kbd> + <kbd>Esc</kbd> , apareceri
 
 ```ranger```
 
-### Poner un puerto a la escucha y obtener una reverse shell, posteriormente conseguir acto seguido una shell TTY 100% interactiva
+### Poner un puerto a la escucha y obtener una reverse shell, posteriormente conseguir acto seguido una shell TTY 100% interactiva (Fuciona para Linux solo)
 
 ```tty <port>```
 
