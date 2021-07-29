@@ -271,6 +271,16 @@ function custom(){
     sudo dpkg -i rustscan_2.0.1_amd64.deb
     rm rustscan_2.0.1_amd64.deb
 
+    echo -e "${cyan}[+] Instalando play ${end}"
+    # Instalacion play    
+    sudo apt install sox -y
+    sudo apt install libsox-fmt-mp3 -y
+
+    echo -e "${cyan}[+] Instalando audacity ${end}"
+    # Instalacion audacity    
+    sudo apt install audacity -y
+
+
     # Instalacion de scrot
     echo -e "${cyan}[+] Instalando scrot ${end}"
     sudo apt-get install scrot -y
