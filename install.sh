@@ -257,6 +257,10 @@ function custom(){
     sudo apt-get update && \
     sudo apt install code code-insiders
 
+    echo -e "${cyan}[+] Instalando SecLists ${end}"
+    # Instalacion seclists
+    sudo apt install seclists -y
+
     echo -e "${cyan}[+] Instalando neofetch ${end}"
     # Instalacion neofetch
     sudo apt install neofetch -y
