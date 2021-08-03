@@ -19,8 +19,8 @@ Recuerda que esta hecho para que funcione para mi user especifico así que si qu
 * **VHD**
     * 80 GB
 * **Particiones**
-    * /home = 25 GB
-    * / = 45 GB
+    * /home = 20 GB
+    * / = 50 GB
     * /var = 5 GB
     * /swap = 4 GB
     * /temp = 1 GB
