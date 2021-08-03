@@ -24,8 +24,7 @@ Recuerda que esta hecho para que funcione para mi user especifico así que si qu
     * Lógica
       * /home = 20 GB
       * /var = 5 GB
-      * /swap = 4 GB
-      * /temp = 1 GB
+      * /swap = 5 GB
 
 ## Instalación:
 > Se recomienda hacer la instalación en una nueva ISO. Si esto no es posible, es decir, si está usando una máquina virtual usada, clonada o preconfigurada, recomiendo hacer una snapshot (instántanea) del estado actual de la máquina, debido a que puede generar problemas y/o conflictos en el transcurso de la instalación. La solución a esto está fuera de mi alcance.
