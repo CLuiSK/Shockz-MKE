@@ -261,6 +261,10 @@ function custom(){
     # Instalacion seclists
     sudo apt install seclists -y
 
+    echo -e "${cyan}[+] Instalando Remmina ${end}"
+    # Instalacion remmina
+    sudo apt install remmina -y
+	
     echo -e "${cyan}[+] Instalando neofetch ${end}"
     # Instalacion neofetch
     sudo apt install neofetch -y
