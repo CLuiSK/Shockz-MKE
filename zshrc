@@ -144,11 +144,11 @@ function rmk(){
 
 function settarget(){
     target=$1
-    echo "$target" > ~/.config/scripts/target
+    echo "$target" > ~/.config/bin/target
 }
 
 function cleartarget(){
-    echo '' > ~/.config/scripts/target
+    echo '' > ~/.config/bin/target
 }
 
 
