@@ -269,6 +269,10 @@ function custom(){
     # Instalacion neofetch
     sudo apt install neofetch -y
 
+    echo -e "${cyan}[+] Instalando rlwrap ${end}"
+    # Instalacion rlweap
+    sudo apt install rlwrap -y
+
     echo -e "${cyan}[+] Instalando shellcheck ${end}"
     # Instalacion shellcheck    
     sudo apt-get install shellcheck -y
