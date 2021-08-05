@@ -75,6 +75,7 @@ alias airgeddon='/usr/bin/airgeddon/airgeddon.sh'
 alias vm='/home/shockz/.config/bin/copy_paste.sh'
 alias tty='/home/shockz/.config/bin/tty.sh'
 alias ch='/usr/bin/chmod +x'
+alias wg='wget -H -r --level=1 -k -p'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
