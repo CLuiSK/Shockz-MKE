@@ -204,17 +204,20 @@ function custom(){
     chmod +x $userPath/.config/bin/tty.sh && chown shockz:shockz $userPath/.config/bin/tty.sh
 
     # Configuracion SSH
-	echo -e "${cyan}[+] Aplicando configuracion ssh${end}"
-	sudo apt-get install openssh-server openssh-client -y
-	##con awk port 22 para habilitar ssh /etc/ssh/sshd_config si es necesario
-	sudo systemctl enable ssh
-	sudo systemctl restart ssh
+    echo -e "${cyan}[+] Aplicando configuracion ssh${end}"
+    sudo apt-get install openssh-server openssh-client -y
+    ##con awk port 22 para habilitar ssh /etc/ssh/sshd_config si es necesario
+    sudo systemctl enable ssh
+    sudo systemctl restart ssh
 
-	# Diccionarios
-	echo -e "${cyan}[+] Extrayendo rockyou${end}"
-	gunzip /usr/share/wordlists/rockyou.txt.gz
-	sudo apt-get install lftp -y
-	wordlist_path=$current_path/wordlists
+    # Diccionarios
+    echo -e "${cyan}[+] Extrayendo rockyou${end}"
+    gunzip /usr/share/wordlists/rockyou.txt.gz
+    sudo apt-get install lftp -y
+    wordlist_path=$current_path/wordlists
+    
+    # Fixing first 13 lines of fuzzing dic
+    sudo sed -i '1,13d' /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt
 
     echo -e "${purple}[+] Deseas instalar Kaonashi? [y/n]${end}"
     read option
@@ -229,25 +232,25 @@ function custom(){
     fi
 
     sudo cp $wordlist_path/pwned-passwords-sha1-ordered-by-count-v7.7z.torrent /usr/share/wordlists/
-	echo -e "${cyan}[+] Configurando actualizaciones automaticas en boot ${end}"
-	sudo apt install unattended-upgrades -y && dpkg-reconfigure --priority=low unattended-upgrades
-	#echo -e "${cyan}[+] Instalando ufw ${end}"
-	#sudo apt install ufw -y
-	#sudo sudo ufw enable
-	# Copiando los drivers y scripts para la configuración del adaptador de red wifi
-	echo -e "${cyan}[+] Copiando los drivers y scripts para la configuración del adaptador de red wifi ${end}"
-	cp $current_path/TP_LINK_ADAPTER.zip $userPath
-	cd $userPath && unzip TP_LINK_ADAPTER.zip && rm TP_LINK_ADAPTER.zip
+    echo -e "${cyan}[+] Configurando actualizaciones automaticas en boot ${end}"
+    sudo apt install unattended-upgrades -y && dpkg-reconfigure --priority=low unattended-upgrades
+    #echo -e "${cyan}[+] Instalando ufw ${end}"
+    #sudo apt install ufw -y
+    #sudo sudo ufw enable
+    # Copiando los drivers y scripts para la configuración del adaptador de red wifi
+    echo -e "${cyan}[+] Copiando los drivers y scripts para la configuración del adaptador de red wifi ${end}"
+    cp $current_path/TP_LINK_ADAPTER.zip $userPath
+    cd $userPath && unzip TP_LINK_ADAPTER.zip && rm TP_LINK_ADAPTER.zip
     echo -e "${cyan}[+] Instalando herramientas wifi ${end}"
     # wifite
     # dos2unix
 
-	#Instalación de hcxtools
-	echo -e "${cyan}[+] Instalando hcxtools ${end}"
+    #Instalación de hcxtools
+    echo -e "${cyan}[+] Instalando hcxtools ${end}"
     sudo apt install hcxtools -y
-	#Instalación de airgeddon
-	echo -e "${cyan}[+] Instalando airgeddon ${end}"
-	cd /usr/bin && sudo git clone https://github.com/v1s1t0r1sh3r3/airgeddon
+    #Instalación de airgeddon
+    echo -e "${cyan}[+] Instalando airgeddon ${end}"
+    cd /usr/bin && sudo git clone https://github.com/v1s1t0r1sh3r3/airgeddon
 
     # Instalacion VS Code
     echo -e "${cyan}[+] Instalando VS Code ${end}"
