@@ -251,7 +251,8 @@ function custom(){
     #Instalación de airgeddon
     echo -e "${cyan}[+] Instalando airgeddon ${end}"
     cd /usr/bin && sudo git clone https://github.com/v1s1t0r1sh3r3/airgeddon
-
+    #Instalacion ciphey
+    python3 -m pip install ciphey --upgrade
     # Instalacion VS Code
     echo -e "${cyan}[+] Instalando VS Code ${end}"
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
