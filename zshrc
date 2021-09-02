@@ -11,6 +11,8 @@ bindkey '^[[1;5C' forward-word
 # Fix the Java Problem
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export ROCKYOU='/usr/share/wordlists/rockyou.txt'
+
 # Enable Powerlevel10k instant prompt. Should stay at the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -76,6 +78,7 @@ alias vm='/home/shockz/.config/bin/copy_paste.sh'
 alias tty='/home/shockz/.config/bin/tty.sh'
 alias ch='/usr/bin/chmod +x'
 alias wg='wget -H -r --level=1 -k -p'
+alias autorecon='python3 /usr/bin/AutoRecon/src/autorecon/autorecon.py'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
