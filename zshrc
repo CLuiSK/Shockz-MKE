@@ -79,6 +79,8 @@ alias tty='/home/shockz/.config/bin/tty.sh'
 alias ch='/usr/bin/chmod +x'
 alias wg='wget -H -r --level=1 -k -p'
 alias autorecon='python3 /usr/bin/AutoRecon/src/autorecon/autorecon.py'
+alias nports='nmap -p- --open -sS --min-rate 2000 -v -n -Pn -oG allPorts'
+alias nserv='nmap -sS -sV -sC --min-rate 2000 -v -n -Pn -oG targetered'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
