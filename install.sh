@@ -273,6 +273,10 @@ function custom(){
     # Instalacion neofetch
     sudo apt install neofetch -y
 
+    echo -e "${cyan}[+] Instalando steghide ${end}"
+    # Instalacion steghide
+    apt install steghide -y
+
     echo -e "${cyan}[+] Instalando haiti ${end}"
     # Instalacion haiti
     gem install haiti-hash
