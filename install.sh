@@ -273,6 +273,10 @@ function custom(){
     # Instalacion neofetch
     sudo apt install neofetch -y
 
+    echo -e "${cyan}[+] Instalando haiti ${end}"
+    # Instalacion haiti
+    gem install haiti-hash
+
     echo -e "${cyan}[+] Instalando rlwrap ${end}"
     # Instalacion rlweap
     sudo apt install rlwrap -y
