@@ -318,7 +318,7 @@ function custom(){
     git clone https://github.com/ffuf/ffuf ; cd ffuf ; go get ; go build ; cd .. ; rm -r ffuf
 
     # Sudo sin requerir passwd
-    # apt-get intall kali-grant-root && dpkg-reconfigure kali-grant-root
+    # apt-get install kali-grant-root && dpkg-reconfigure kali-grant-root
 
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
