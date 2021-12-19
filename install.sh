@@ -320,6 +320,13 @@ function custom(){
     # Sudo sin requerir passwd
     # apt-get install kali-grant-root && dpkg-reconfigure kali-grant-root
 
+    # AWS Cli
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    sudo rm -r aws && sudo rm awscliv2.zip
+
+
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
