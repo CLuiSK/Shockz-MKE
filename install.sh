@@ -338,6 +338,9 @@ function custom(){
 	
     #SShuttle
     apt-get install sshuttle -y
+    
+    # Tor y Proxychains
+    sudo apt install tor proxychains -y
 
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
