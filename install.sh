@@ -333,6 +333,14 @@ function custom(){
     sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
+    # Impacket
+    sudo apt-get install python3-pip -y
+    git clone https://github.com/SecureAuthCorp/impacket.git
+    cd impacket
+    pip3 install .
+    cd .. && sudo rm -r impacket
+    
+
     # SMTP enum
     sudo apt install smtp-user-enum -y
 	
