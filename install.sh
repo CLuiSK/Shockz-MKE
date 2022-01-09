@@ -340,7 +340,6 @@ function custom(){
     pip3 install .
     cd .. && sudo rm -r impacket
     
-
     # SMTP enum
     sudo apt install smtp-user-enum -y
 	
@@ -349,6 +348,11 @@ function custom(){
     
     # Tor y Proxychains
     sudo apt install tor proxychains -y
+    
+    # MDK3
+    sudo apt-get install mdk3 -y
+    
+    
 
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
