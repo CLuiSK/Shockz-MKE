@@ -357,6 +357,7 @@ function custom(){
     
     # BurpSuite pro
     echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUp4U0RiNEIjSGdZdzExOEItY3Z4Q1RTTTRyem5vbjdzeXlqZGtWWUc1R3lDbDczUnAxdw==" | base64 -d > /home/shockz/burp.txt
+    ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
