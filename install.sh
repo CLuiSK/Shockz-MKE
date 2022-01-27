@@ -352,6 +352,8 @@ function custom(){
     # MDK3
     sudo apt-get install mdk3 -y
     
+    # One list for all web
+    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7z x onelistforall.7z.001 && cd -
     
 
     echo -e "${cyan}[+] Limpiando... ${end}"
