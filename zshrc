@@ -149,11 +149,11 @@ function rmk(){
 
 function settarget(){
     target=$1
-    echo "$target" > ~/.config/bin/target
+    echo "$target" > /home/shockz/.config/bin/target
 }
 
 function cleartarget(){
-    echo '' > ~/.config/bin/target
+    echo '' > /home/shockz/.config/bin/target
 }
 
 
