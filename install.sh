@@ -355,6 +355,8 @@ function custom(){
     # One list for all web
     cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7z x onelistforall.7z.001 && cd -
     
+    # BurpSuite pro
+    echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUp4U0RiNEIjSGdZdzExOEItY3Z4Q1RTTTRyem5vbjdzeXlqZGtWWUc1R3lDbDczUnAxdw==" | base64 -d > /home/shockz/burp.txt
 
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
