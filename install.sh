@@ -359,6 +359,23 @@ function custom(){
     echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUp4U0RiNEIjSGdZdzExOEItY3Z4Q1RTTTRyem5vbjdzeXlqZGtWWUc1R3lDbDczUnAxdw==" | base64 -d > /home/shockz/burp.txt
     ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
+    # APKTOOL/Zipalign/jarsigner
+    sudo apt-get install apktool -y
+    sudo apt-get install openjdk-11-jdk -y
+    sudo apt-get install zipalign -y
+    
+    # Nuclei
+    cd /home/shockz
+    sudo apt install golang -y
+    git clone https://github.com/projectdiscovery/nuclei.git 
+    cd nuclei/v2/cmd/nuclei/ 
+    go build . 
+    mv nuclei /usr/local/bin/ 
+    nuclei -ut
+    cd /home/shockz
+    rm -r nuclei
+	
+	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
