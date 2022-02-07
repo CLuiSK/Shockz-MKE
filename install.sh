@@ -375,6 +375,9 @@ function custom(){
     cd /home/shockz
     rm -r nuclei
 	
+	# RLWRAP
+	sudo apt install rlwrap -y
+	
 	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
