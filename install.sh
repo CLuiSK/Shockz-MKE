@@ -378,6 +378,12 @@ function custom(){
 	# RLWRAP
 	sudo apt install rlwrap -y
 	
+	# MITM6
+	git clone https://github.com/dirkjanm/mitm6.git
+	cd mitm6
+	python3 -m pip install -r requirements.txt
+	python3 setup.py install
+	cd .. && sudo rm -r mitm6/
 	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
