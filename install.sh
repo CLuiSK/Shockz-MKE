@@ -385,6 +385,12 @@ function custom(){
 	python3 setup.py install
 	cd .. && sudo rm -r mitm6/
 	
+	# ldapdomaindump
+	git clone https://github.com/dirkjanm/ldapdomaindump.git
+	cd ldapdomaindump
+	python3 -m pip install ldap3 dnspython future
+	python3 setup.py install
+	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
