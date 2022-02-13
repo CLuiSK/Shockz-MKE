@@ -391,6 +391,12 @@ function custom(){
 	python3 -m pip install ldap3 dnspython future
 	python3 setup.py install
 	
+	# Evil-winrm
+	sudo gem install winrm winrm-fs stringio
+	git clone https://github.com/Hackplayers/evil-winrm.git
+	cp -r evil-winrm /usr/bin/
+	
+	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
