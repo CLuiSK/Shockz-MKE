@@ -365,15 +365,15 @@ function custom(){
     sudo apt-get install zipalign -y
     
     # Nuclei
-    cd /home/shockz
-    sudo apt install golang -y
-    git clone https://github.com/projectdiscovery/nuclei.git 
-    cd nuclei/v2/cmd/nuclei/ 
-    go build . 
-    mv nuclei /usr/local/bin/ 
-    nuclei -ut
-    cd /home/shockz
-    rm -r nuclei
+    #cd /home/shockz
+    #sudo apt install golang -y
+    #git clone https://github.com/projectdiscovery/nuclei.git 
+    #cd nuclei/v2/cmd/nuclei/ 
+    #go build . 
+    #mv nuclei /usr/local/bin/ 
+    #nuclei -ut
+    #cd /home/shockz
+    #rm -r nuclei
 	
 	# RLWRAP
 	sudo apt install rlwrap -y
