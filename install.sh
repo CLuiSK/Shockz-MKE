@@ -397,6 +397,11 @@ function custom(){
 	cp -r evil-winrm /usr/bin/
 	
 	
+	
+	# Devolviendo permisos a Shockz
+	chown -R shockz:shockz /home/shockz/*
+	chmod -R +x /home/shockz/*
+	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
