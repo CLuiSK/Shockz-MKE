@@ -136,6 +136,14 @@ Escribimos un comando y al presionar <kbd>Esc</kbd> + <kbd>Esc</kbd> , apareceri
 
 ```tty <port>```
 
+### Reproducir un archivo audio
+
+```play <file>```
+
+### Visualizar una imagen
+
+```display <file>```
+
 #
 
 > Ten en cuenta que cuando nos referimos a la tecla <kbd>Windows</kbd>, esta puede cambiar dependiendo del pointer_modifier seleccionado, que se encuentra en el archivo ~/.config/bspwm/bspwmrc
