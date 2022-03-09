@@ -55,7 +55,6 @@ git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x 
 - **sxhkd**: Es un "demonio" que escucha los eventos del teclado y ejecuta comandos. Autor: [baskerville](https://github.com/baskerville)
 - **polybar**: Herramienta rápida y fácil de usar para crear barras de estado.
 - **polybar-themes**: Temas para la polybar. Autor: [VaughnValle](https://github.com/VaughnValle)
-- **picom**: Es un compositor para X11. Autor: [yshui](https://github.com/yshui)
 - **rofi**: Selector de ventana y lanzador de aplicaciones.
 - **feh**: Visor de imágenes ligero, configurable y versátil.
 - **Hack Nerd Font**: Fuente.
@@ -80,7 +79,7 @@ git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x 
 <kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>(⬆⬅⬇➡)</kbd> : Cambiar la posición de la ventana actual (solo funciona en modo flotante).  
 <kbd>Windows</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> : Abrir Google Chrome (es necesario instalarlo primero).  
 <kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>(⬆⬅⬇➡)</kbd> : Mostrar una preselección para luego abrir una ventana (una terminal, Google Chrome, un archivo, etc.). 
-<kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>Space</kbd> para deshacer la preselección.  
+<kbd>Windows</kbd> + <kbd>Ctrl</kbd> + <kbd>Space</kbd> para deshacer la preselección.
 <kbd>Windows</kbd> + <kbd>Alt</kbd> + <kbd>(R)</kbd>: Recargar la configuracion
 
 #### Atajos zsh

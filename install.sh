@@ -24,18 +24,26 @@ function user_shockz(){
     sudo apt update && sudo apt install cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev -y
     sudo apt update
     sudo apt install meson libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev libxcb-glx0-dev -y
+   
     # Instalacion de rofi
     sudo apt install rofi -y
     # Instalacion de firejail
-    sudo apt install firejail -y
+    #sudo apt install firejail -y
     # Instalacion de gnome-terminal
     sudo apt install gnome-terminal -y
-    # Instalacion de FEH (wallpapers)
-    sudo apt install feh -y
     # Instalacion de bspwm
     sudo apt install bspwm -y
-    # Instalación de ranger
-    sudo apt install ranger -y
+
+    ### BSPWM y SXHKD
+    echo -e "${cyan} [*] Descargando e instalando BSPWM y SXHKD ${end}"
+    cd $userPath/Descargas
+    git clone https://github.com/baskerville/bspwm.git
+    git clone https://github.com/baskerville/sxhkd.git
+
+    cd bspwm/ && make && sudo make install
+    cd ../sxhkd/ && make && sudo make install
+
+
     # Instalacion de scrub
     sudo apt install scrub
     # Instalando wmname
@@ -47,14 +55,6 @@ function user_shockz(){
     # Disable sleep/suspend
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 
-    ### BSPWM y SXHKD
-    echo -e "${cyan} [*] Descargando e instalando BSPWM y SXHKD ${end}"
-    cd $userPath/Descargas
-    git clone https://github.com/baskerville/bspwm.git
-    git clone https://github.com/baskerville/sxhkd.git
-
-    cd bspwm/ && make && sudo make install
-    cd ../sxhkd/ && make && sudo make install
 
     # Instalacion de polybar
     echo -e "${cyan} [*] Instalando la polybar ${end}"
@@ -67,14 +67,6 @@ function user_shockz(){
     sudo make -j$(nproc)
     sudo make install
 
-    # Instalacion de picom
-    echo -e "${cyan} [*] Instalando picom ${end}"
-    cd $userPath/Descargas && git clone https://github.com/ibhagwan/picom.git
-    cd picom/ && git submodule update --init --recursive
-    meson --buildtype=release . build
-    ninja -C build
-    sudo ninja -C build install
-
     # Instalacion de hackfonts
     echo -e "${cyan} [*] Instalando HackNet Fonts ${end}"
     cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip && sudo unzip Hack.zip
@@ -82,16 +74,16 @@ function user_shockz(){
 
     # wallpapers
     echo -e "${cyan} [*] Configurando el wallpaper ${end}"
-    mkdir $userPath/Escritorio/wallpaper
-    cp $current_path/wallpaper/wallpaper.png $userPath/Escritorio/wallpaper/fondo.png
+    cp -r $current_path/wallpapers $userPath/Escritorio
 
     echo -e "${cyan} [*] Copiando archivos de configuracion ${end}"
-    sudo cp -r $current_path/config/* $userPath/.config/
+    sudo cp -r $current_path/config/* $userPath/.config
     # Si se va usar root como user en login
     #sudo cp -r $current_path/config /root/.config
     chown -R shockz:shockz $userPath/.config
-    chmod +x $userPath/.config/bspwm/bspwmrc
-    chmod +x $userPath/.config/bspwm/scripts/bspwm_resize
+
+    #chmod +x $userPath/.config/bspwm/bspwmrc
+    #chmod +x $userPath/.config/bspwm/scripts/bspwm_resize
 
     # Fuentes polybar
     echo -e "${cyan} [*] Estableciendo las fuentes para la polybar ${end}"
@@ -103,10 +95,12 @@ function user_shockz(){
     # Eliminamos el repo
     rm -r $userPath/Descargas/blue-sky
 
+
     # Permisos de ejecucion a scripts de polybar
-    echo -e "${cyan} [*] Dando permisos a los scripts del entorno ${end}"
-    chmod +x $userPath/.config/bin/*
-    chmod +x $userPath/.config/polybar/scripts/powermenu_alt
+    #echo -e "${cyan} [*] Dando permisos a los scripts del entorno ${end}"
+    #chmod +x $userPath/.config/bin/*
+    #chmod +x $userPath/.config/polybar/scripts/powermenu_alt
+    # DEBERIA LLEGAR CON EL ANTERIOR 
 
     # Lock
     #sudo apt update
@@ -149,7 +143,7 @@ function user_shockz(){
     chown -R shockz:shockz $userPath/.fzf
     su shockz -c "$userPath/.fzf/install"
 
-    sudo cp -r $current_path/zsh-plugins /usr/share/ && chown shockz:shockz /usr/share/zsh-plugins
+    sudo cp -r $current_path/zsh-plugins /usr/share/ && chown -R shockz:shockz /usr/share/zsh-plugins
 
 }
 
@@ -210,12 +204,16 @@ function custom(){
     sudo systemctl enable ssh
     sudo systemctl restart ssh
 
-    # Diccionarios
+    #------ Diccionarios  ------#
     echo -e "${cyan}[+] Extrayendo rockyou${end}"
     gunzip /usr/share/wordlists/rockyou.txt.gz
     sudo apt-get install lftp -y
     wordlist_path=$current_path/wordlists
     
+    echo -e "${cyan}[+] Instalando SecLists ${end}"
+    # Instalacion seclists
+    sudo apt install seclists -y
+
     # Fixing first 13 lines of fuzzing dic
     sudo sed -i '1,13d' /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt
 
@@ -260,10 +258,6 @@ function custom(){
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' && \
     sudo apt-get update && \
     sudo apt install code code-insiders
-
-    echo -e "${cyan}[+] Instalando SecLists ${end}"
-    # Instalacion seclists
-    sudo apt install seclists -y
 
     echo -e "${cyan}[+] Instalando Remmina ${end}"
     # Instalacion remmina
@@ -353,9 +347,9 @@ function custom(){
     sudo apt-get install mdk3 -y
     
     # One list for all web
-    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7z x onelistforall.7z.001 && cd -
+    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7z x onelistforall.7z.001 && cd /home/shockz
     
-    # BurpSuite pro
+    # BurpSuite pro/ burpbounty
     echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUp4U0RiNEIjSGdZdzExOEItY3Z4Q1RTTTRyem5vbjdzeXlqZGtWWUc1R3lDbDczUnAxdw==" | base64 -d > /home/shockz/burp.txt
     ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
@@ -364,6 +358,10 @@ function custom(){
     sudo apt-get install openjdk-11-jdk -y
     sudo apt-get install zipalign -y
     
+    # Nuclei update
+    sudo apt install nuclei
+    nuclei
+
     # Nuclei
     #cd /home/shockz
     #sudo apt install golang -y
@@ -375,6 +373,29 @@ function custom(){
     #cd /home/shockz
     #rm -r nuclei
 	
+    # DNSX
+    git clone https://github.com/projectdiscovery/dnsx.git
+    cd dnsx/cmd/dnsx
+    go build
+    mv dnsx /usr/local/bin/
+    cd -
+    sudo rm -r dnsx
+    # HTTPX
+    git clone https://github.com/projectdiscovery/httpx.git
+    cd httpx/cmd/httpx
+    go build
+    mv httpx /usr/local/bin/
+    cd -
+    sudo rm -r httpx
+    # subfinder
+    git clone https://github.com/projectdiscovery/subfinder.git
+    cd subfinder/v2/cmd/subfinder
+    go build
+    mv subfinder /usr/local/bin/
+    cd -
+    sudo rm -r subfinder
+    # Falta config.yaml
+
 	# RLWRAP
 	sudo apt install rlwrap -y
 	
@@ -396,11 +417,16 @@ function custom(){
 	git clone https://github.com/Hackplayers/evil-winrm.git
 	cp -r evil-winrm /usr/bin/
 	
-	
+	# shcheck.py
+    pip3 install shcheck
+
+    # testssl
+    sudo apt install testssl.sh -y
 	
 	# Devolviendo permisos a Shockz
-	chown -R shockz:shockz /home/shockz/*
-	chmod -R +x /home/shockz/*
+	sudo chown -R shockz:shockz /home/shockz/*
+	sudo chmod +x -R  /home/shockz/*
+    sudo chmod +x -R  /home/shockz/.config
 	
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios

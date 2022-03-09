@@ -127,4 +127,4 @@ alt + super + {Left,Down,Up,Right}
 
 # Open firefox
 super + shift + f
-	firejail /opt/firefox
+	/opt/firefox

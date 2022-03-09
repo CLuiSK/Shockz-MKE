@@ -2,7 +2,7 @@
 # Archivo para habilitar copy paste en vmware
 /home/shockz/.config/bin/copy_paste.sh &
 # Fix resdimensionalizacion de vmware
-wmname LG3D 1> /dev/null &
+#wmname LG3D 1> /dev/null &
 
 # Fix cursor
 bindkey '^[[1;5D' backward-word
