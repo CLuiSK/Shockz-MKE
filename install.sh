@@ -241,7 +241,7 @@ function custom(){
     # dos2unix
 
     echo -e "${cyan}[+] Instalando pip2 ${end}"
-    sudo apt install python-pip
+    sudo apt install python-pip -y
 
     #Instalación de hcxtools
     echo -e "${cyan}[+] Instalando hcxtools ${end}"
