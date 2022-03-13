@@ -35,6 +35,15 @@ function user_shockz(){
     sudo apt install bspwm -y
     # Instalacion feh
     sudo apt install feh -y
+    # Instalacion de picom
+    echo -e "${cyan} [*] Instalando picom ${end}"
+    cd $userPath/Descargas && git clone https://github.com/yshui/picom.git
+    cd picom/ && git submodule update --init --recursive
+    meson --buildtype=release . build
+    ninja -C build
+    sudo ninja -C build install
+    cd - && rm -r picom
+
 
     ### BSPWM y SXHKD
     echo -e "${cyan} [*] Descargando e instalando BSPWM y SXHKD ${end}"

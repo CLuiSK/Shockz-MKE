@@ -21,6 +21,7 @@ bspc rule -a Screenkey manage=off
 
 #feh --bg-fill /home/shockz/Escritorio/wallpaper/fondo.png
 feh --bg-fill --randomize /home/shockz/Escritorio/wallpapers/*
+picom --experimental-backends &
 sh ~/.config/polybar/./launch.sh
 bspc config focus_follows_pointer true
 bspc config border_width 0
