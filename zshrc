@@ -78,11 +78,12 @@ alias vm='/home/shockz/.config/bin/copy_paste.sh'
 alias tty='/home/shockz/.config/bin/tty.sh'
 alias ch='/usr/bin/chmod +x'
 alias wg='wget -H -r --level=1 -k -p'
-alias autorecon='python3 /usr/bin/AutoRecon/src/autorecon/autorecon.py'
+alias autorecon='python3 /usr/bin/AutoRecon/autorecon.py'
 alias nports='nmap -p- --open -sS --min-rate 2000 -v -n -Pn -oG allPorts'
 alias nserv='nmap -sS -sV -sC --min-rate 2000 -v -n -Pn -oG targetered'
 alias burpro='java -javaagent:/opt/BurpPro/BurpSuiteLoader_v2021.12.1.jar -noverify -jar /opt/BurpPro/burpsuite_pro_v2021.12.1.jar'
 alias server='/usr/bin/python3 -m http.server 80'
+alias spiderfoot='python3 /opt/spiderfoot/sf.py -l 127.0.0.1:5001'
 
 
 

@@ -43,7 +43,6 @@ function user_shockz(){
     cd bspwm/ && make && sudo make install
     cd ../sxhkd/ && make && sudo make install
 
-
     # Instalacion de scrub
     sudo apt install scrub
     # Instalando wmname
@@ -51,10 +50,8 @@ function user_shockz(){
     # Instalando xclip
     sudo apt install xclip -y
 
-
     # Disable sleep/suspend
     sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
-
 
     # Instalacion de polybar
     echo -e "${cyan} [*] Instalando la polybar ${end}"
@@ -243,6 +240,9 @@ function custom(){
     # wifite
     # dos2unix
 
+    echo -e "${cyan}[+] Instalando pip2 ${end}"
+    sudo apt install python-pip
+
     #Instalación de hcxtools
     echo -e "${cyan}[+] Instalando hcxtools ${end}"
     sudo apt install hcxtools -y
@@ -283,8 +283,10 @@ function custom(){
     # Instalacion shellcheck    
     sudo apt-get install shellcheck -y
 
-    # Instalacion autorecon    
+    # Instalacion autorecon
     cd /usr/bin && sudo git clone https://github.com/Tib3rius/AutoRecon && cd -
+    ## Dependencias
+    sudo apt install feroxbuster gobuster nbtscan oscanner redis-tools snmp sslscan sipvicious tnscmd10g wkhtmltopdf -y
 
     echo -e "${cyan}[+] Instalando rustscan ${end}"
     # Instalacion de rustscan
@@ -312,15 +314,18 @@ function custom(){
     git clone https://github.com/ffuf/ffuf ; cd ffuf ; go get ; go build ; cd .. ; rm -r ffuf
 
     # Sudo sin requerir passwd
-    # apt-get install kali-grant-root && dpkg-reconfigure kali-grant-root
+    echo -e "${cyan}[+] Instalando grantroot ${end}"
+    apt-get install kali-grant-root && dpkg-reconfigure kali-grant-root
 
     # AWS Cli
+    echo -e "${cyan}[+] Instalando aws cli ${end}"
     curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install
     sudo rm -r aws && sudo rm awscliv2.zip
 
     # Docker
+    echo -e "${cyan}[+] Instalando docker ${end}"
     sudo apt install docker.io -y
     sudo systemctl start docker
     sudo systemctl enable docker
@@ -328,6 +333,7 @@ function custom(){
     sudo chmod +x /usr/local/bin/docker-compose
 
     # Impacket
+    echo -e "${cyan}[+] Instalando impacket ${end}"
     sudo apt-get install python3-pip -y
     git clone https://github.com/SecureAuthCorp/impacket.git
     cd impacket
@@ -335,45 +341,39 @@ function custom(){
     cd .. && sudo rm -r impacket
     
     # SMTP enum
+    echo -e "${cyan}[+] Instalando smtp enum ${end}"
     sudo apt install smtp-user-enum -y
 	
     #SShuttle
+    echo -e "${cyan}[+] Instalando sshuttle ${end}"
     apt-get install sshuttle -y
     
     # Tor y Proxychains
+    echo -e "${cyan}[+] Instalando tor, proxychains ${end}"
     sudo apt install tor proxychains -y
     
     # MDK3
+    echo -e "${cyan}[+] Instalando mdk3 ${end}"
     sudo apt-get install mdk3 -y
+
     
     # One list for all web
+    echo -e "${cyan}[+] Instalando OneList4All ${end}"
     cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7z x onelistforall.7z.001 && cd /home/shockz
-    
-    # BurpSuite pro/ burpbounty
-    echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUp4U0RiNEIjSGdZdzExOEItY3Z4Q1RTTTRyem5vbjdzeXlqZGtWWUc1R3lDbDczUnAxdw==" | base64 -d > /home/shockz/burp.txt
-    ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
     # APKTOOL/Zipalign/jarsigner
+    echo -e "${cyan}[+] Instalando Apktool/Zipalign/jarsigner ${end}"
     sudo apt-get install apktool -y
     sudo apt-get install openjdk-11-jdk -y
     sudo apt-get install zipalign -y
     
     # Nuclei update
+    echo -e "${cyan}[+] Configuración nuclei ${end}"
     sudo apt install nuclei
     nuclei
 
-    # Nuclei
-    #cd /home/shockz
-    #sudo apt install golang -y
-    #git clone https://github.com/projectdiscovery/nuclei.git 
-    #cd nuclei/v2/cmd/nuclei/ 
-    #go build . 
-    #mv nuclei /usr/local/bin/ 
-    #nuclei -ut
-    #cd /home/shockz
-    #rm -r nuclei
-	
     # DNSX
+    echo -e "${cyan}[+] Instalando DNSX ${end}"
     git clone https://github.com/projectdiscovery/dnsx.git
     cd dnsx/cmd/dnsx
     go build
@@ -381,25 +381,24 @@ function custom(){
     cd -
     sudo rm -r dnsx
     # HTTPX
+    echo -e "${cyan}[+] Instalando HTTPX ${end}"
     git clone https://github.com/projectdiscovery/httpx.git
     cd httpx/cmd/httpx
     go build
     mv httpx /usr/local/bin/
     cd -
     sudo rm -r httpx
-    # subfinder
-    git clone https://github.com/projectdiscovery/subfinder.git
-    cd subfinder/v2/cmd/subfinder
-    go build
-    mv subfinder /usr/local/bin/
-    cd -
-    sudo rm -r subfinder
-    # Falta config.yaml
+
+    # ysoserial
+    echo -e "${cyan}[+] Instalando ysoserial ${end}"
+    wget https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar && mkdir /opt/ysoserial && mv ysoserial-master-SNAPSHOT.jar /opt/ysoserial/ysoserial.jar
 
 	# RLWRAP
+    echo -e "${cyan}[+] Instalando rlwrap ${end}"
 	sudo apt install rlwrap -y
 	
 	# MITM6
+    echo -e "${cyan}[+] Instalando mitm6 ${end}"
 	git clone https://github.com/dirkjanm/mitm6.git
 	cd mitm6
 	python3 -m pip install -r requirements.txt
@@ -407,22 +406,112 @@ function custom(){
 	cd .. && sudo rm -r mitm6/
 	
 	# ldapdomaindump
+    echo -e "${cyan}[+] Instalando ldapdomaindump ${end}"
 	git clone https://github.com/dirkjanm/ldapdomaindump.git
 	cd ldapdomaindump
 	python3 -m pip install ldap3 dnspython future
 	python3 setup.py install
+    cd - && rm -r ldapdomaindump
 	
 	# Evil-winrm
+    echo -e "${cyan}[+] Instalando Evil-winrm ${end}"
 	sudo gem install winrm winrm-fs stringio
 	git clone https://github.com/Hackplayers/evil-winrm.git
 	cp -r evil-winrm /usr/bin/
+    chmod +x /usr/bin/evil-winrm
 	
 	# shcheck.py
+    echo -e "${cyan}[+] Instalando shcheck ${end}"
     pip3 install shcheck
 
     # testssl
+    echo -e "${cyan}[+] Instalando testssl ${end}"
     sudo apt install testssl.sh -y
 	
+    ##--Subdomains OSINT Threat Intelligence--#
+    # subfinder
+    echo -e "${cyan}[+] Instalando Subfinder ${end}"
+    git clone https://github.com/projectdiscovery/subfinder.git
+    cd subfinder/v2/cmd/subfinder
+    go build
+    mv subfinder /usr/local/bin/
+    cd -
+    sudo rm -r subfinder
+
+    # amass
+    echo -e "${cyan}[+] Instalando Amass ${end}"
+    wget https://github.com/OWASP/Amass/releases/download/v3.17.1/amass_linux_amd64.zip && unzip amass_linux_amd64.zip && mv amass_linux_amd64/amass /usr/local/bin/
+    sudo rm -r amass_linux_amd64*
+
+    # aquatone
+    echo -e "${cyan}[+] Instalando Aquatone ${end}"
+    wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip && mkdir aquatone && unzip aquatone_linux_amd64_1.7.0.zip -d aquatone
+    mv aquatone/aquatone /usr/local/bin/ && rm -r aquatone*
+
+    # JQ
+    echo -e "${cyan}[+] Instalando JQ ${end}"
+    sudo apt install jq -y
+
+    # CTFR
+    echo -e "${cyan}[+] Instalando CTFR ${end}"
+    git clone https://github.com/UnaPibaGeek/ctfr.git && pip3 install -r ctfr/requirements.txt && chmod +x ctfr/ctfr.py && mv ctfr/ctfr.py /usr/local/bin/ && sudo rm -r ctfr
+
+    # prips
+    echo -e "${cyan}[+] Instalando Prips ${end}"
+    git clone https://github.com/honzahommer/prips.sh.git && prips.sh/install.sh /usr/local && sudo rm -r prips.sh
+
+    # Gotator
+    echo -e "${cyan}[+] Instalando Gotator ${end}"
+    git clone https://github.com/Josue87/gotator.git
+    cd gotator
+    go build
+    mv gotator /usr/local/bin/
+    cd -
+    sudo rm -r gotator
+
+    # Gospider
+    echo -e "${cyan}[+] Instalando Gospider ${end}"
+    git clone https://github.com/jaeles-project/gospider.git
+    cd gospider
+    go build
+    mv gospider /usr/local/bin/
+    cd -
+    sudo rm -r gospider
+
+    # unfurl
+    echo -e "${cyan}[+] Instalando Unfurl ${end}"
+    wget https://github.com/tomnomnom/unfurl/releases/download/v0.0.1/unfurl-linux-amd64-0.0.1.tgz
+    tar xzf unfurl-linux-amd64-0.0.1.tgz
+    sudo mv unfurl /usr/bin/
+    rm unfurl-linux-amd64-0.0.1.tgz
+
+    ##Spiderfoot
+    echo -e "${cyan}[+] Instalando Spiderfoot ${end}"
+    git clone https://github.com/smicallef/spiderfoot.git
+    pip3 install -r spiderfoot/requirements.txt
+    mv spiderfoot /opt/
+
+    # MEGA TOOLS
+    echo -e "${cyan}[+] Instalando Megatools ${end}"
+    sudo apt install megatools
+    echo -e "${cyan}[+] Descomprimiendo data ${end}"
+    sudo apt install megatools -y
+    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvVlpvVmtZeUQjY3NLbmpBOXNMb0J0cXBoSmRobktxdWRPX09rOU9uazdVbjlXX1I1N3VQTQ==" | base64 -d)
+    sudo apt install p7zip-full -y
+    7z x Data.7z
+    # BurpSuite pro/ burpbounty
+    echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
+    mv Data/BurpPro /opt
+    ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
+    echo -e "${cyan}[+] Configurando apis y ysoserial txt ${end}"
+    mv Data/ysoserial_payloaders /opt
+    # mover subfinder api
+    mv Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
+    mv Data/apis/amass /home/shockz/.config/amass
+    mv Data/apis/spiderfoot /home/shockz/.config/spiderfoot
+
+
+
 	# Devolviendo permisos a Shockz
 	sudo chown -R shockz:shockz /home/shockz/*
 	sudo chmod +x -R  /home/shockz/*
