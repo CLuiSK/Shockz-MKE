@@ -33,6 +33,8 @@ function user_shockz(){
     sudo apt install gnome-terminal -y
     # Instalacion de bspwm
     sudo apt install bspwm -y
+    # Instalacion feh
+    sudo apt install feh -y
 
     ### BSPWM y SXHKD
     echo -e "${cyan} [*] Descargando e instalando BSPWM y SXHKD ${end}"
@@ -511,7 +513,9 @@ function custom(){
     mv Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
     mv Data/apis/amass /home/shockz/.config/amass
     mv Data/apis/spiderfoot /home/shockz/.config/spiderfoot
-
+    rm -r Data*
+    # fix locate
+    sudo updatedb
 
 
 	# Devolviendo permisos a Shockz
