@@ -204,6 +204,7 @@ function custom(){
     #------ Diccionarios  ------#
     echo -e "${cyan}[+] Extrayendo rockyou${end}"
     gunzip /usr/share/wordlists/rockyou.txt.gz
+    rm /usr/share/wordlists/rockyou.txt.gz
     sudo apt-get install lftp -y
     wordlist_path=$current_path/wordlists
     
@@ -257,7 +258,7 @@ function custom(){
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' && \
     sudo apt-get update && \
-    sudo apt install code code-insiders
+    sudo apt install code code-insiders -y
 
     echo -e "${cyan}[+] Instalando Remmina ${end}"
     # Instalacion remmina
@@ -417,7 +418,7 @@ function custom(){
     echo -e "${cyan}[+] Instalando Evil-winrm ${end}"
 	sudo gem install winrm winrm-fs stringio
 	git clone https://github.com/Hackplayers/evil-winrm.git
-	cp -r evil-winrm /usr/bin/
+	mv evil-winrm /usr/bin/
     chmod +x /usr/bin/evil-winrm
 	
 	# shcheck.py
@@ -506,6 +507,7 @@ function custom(){
     echo -e "${cyan}[+] Configurando apis y ysoserial txt ${end}"
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
+    subfinder
     mv Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
     mv Data/apis/amass /home/shockz/.config/amass
     mv Data/apis/spiderfoot /home/shockz/.config/spiderfoot
