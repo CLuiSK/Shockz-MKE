@@ -205,6 +205,10 @@ function custom(){
     sudo cp $current_path/scripts/tty.sh $userPath/.config/bin/
     chmod +x $userPath/.config/bin/tty.sh && chown shockz:shockz $userPath/.config/bin/tty.sh
 
+    # tools
+    echo -e "${cyan} [*] Copiando enum_priv_esc_tools ${end}"
+    unzip $current_path/priv_esc_tools.zip -d $userPath
+
     # Configuracion SSH
     echo -e "${cyan}[+] Aplicando configuracion ssh${end}"
     sudo apt-get install openssh-server openssh-client -y
