@@ -527,9 +527,53 @@ function custom(){
     mv Data/apis/amass /home/shockz/.config/amass
     mv Data/apis/spiderfoot /home/shockz/.config/spiderfoot
     rm -r Data*
+
+    # freq,gf,waybackurls,airixss,qsreplace
+    echo -e "${cyan}[+] Instalando freq,gf,waybackurls,airixss,qsreplace ${end}"
+    go get -u github.com/takshal/freq
+    go get -u github.com/tomnomnom/gf
+    go get -u github.com/tomnomnom/waybackurls
+    go get -u github.com/ferreiraklet/airixss
+    go get -u github.com/tomnomnom/qsreplace
+    sudo mv go/bin/* /usr/local/bin/
+    sudo rm -r go
+
+    # gf patterns
+    git clone https://github.com/1ndianl33t/Gf-Patterns
+    mkdir /home/shockz/.gf
+    mv /home/shockz/Gf-Patterns/*.json /home/shockz/.gf
+
+    # uro
+    echo -e "${cyan}[+] Instalando uro ${end}"
+    sudo pip3 install uro
+
+    # nuclei burp
+    echo -e "${cyan}[+] Descargando nuclei burp ${end}"
+    wget https://github.com/projectdiscovery/nuclei-burp-plugin/releases/download/v1.0.0-rc1/nuclei-burp-plugin-1.0.0-rc1.jar
+    sudo mv nuclei-burp-plugin-1.0.0-rc1.jar /opt/BurpPro/nuclei_burp.jar
+
+    # zsteg
+    echo -e "${cyan}[+] Descargando zsteg ${end}"
+    gem install zsteg
+
+    # exiftool
+    echo -e "${cyan}[+] Descargando exiftool ${end}"
+    sudo apt install exiftool -y
+
+    # stegoveritas
+    echo -e "${cyan}[+] Descargando stegoveritas ${end}"
+    sudo pip3 install stegoveritas
+    stegoveritas_install_deps
+
+    # stegseek
+    echo -e "${cyan}[+] Descargando stegseek ${end}"
+    wget https://github.com/RickdeJager/stegseek/releases/download/v0.6/stegseek_0.6-1.deb
+    sudo apt install ./stegseek_0.6-1.deb -y
+    rm stegseek_0.6-1.deb
+
+
     # fix locate
     sudo updatedb
-
 
 	# Devolviendo permisos a Shockz
 	sudo chown -R shockz:shockz /home/shockz/*
