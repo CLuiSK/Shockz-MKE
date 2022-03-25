@@ -393,7 +393,7 @@ function custom(){
     git clone https://github.com/projectdiscovery/dnsx.git
     cd dnsx/cmd/dnsx
     go build
-    mv dnsx /usr/local/bin/
+    mv dnsx /usr/local/bin/ 
     cd -
     sudo rm -r dnsx
     # HTTPX
@@ -570,6 +570,41 @@ function custom(){
     wget https://github.com/RickdeJager/stegseek/releases/download/v0.6/stegseek_0.6-1.deb
     sudo apt install ./stegseek_0.6-1.deb -y
     rm stegseek_0.6-1.deb
+
+    # naabu
+    echo -e "${cyan}[+] Descargando naabu ${end}"
+    wget https://github.com/projectdiscovery/naabu/releases/download/v2.0.5/naabu_2.0.5_linux_amd64.zip
+    unzip naabu_2.0.5_linux_amd64.zip
+    chmod +x naabu
+    sudo mv naabu /usr/local/bin/ 
+    sudo rm naabu_2.0.5_linux_amd64.zip
+
+    # gau
+    echo -e "${cyan}[+] Descargando gau ${end}"
+    git clone https://github.com/lc/gau.git
+    cd gau/cmd/gau
+    go build
+    chmod +x gau
+    sudo mv gau /usr/local/bin/ 
+    cd -
+    sudo rm -r gau
+
+    # findomain
+    echo -e "${cyan}[+] Descargando findomain ${end}"
+    wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
+    chmod +x findomain-linux
+    mv findomain-linux findomain
+    sudo mv findomain /usr/local/bin/
+
+    # anew
+    echo -e "${cyan}[+] Descargando anew ${end}"
+    git clone https://github.com/tomnomnom/anew.git
+    cd anew
+    go build
+    chmod +x anew
+    sudo mv anew /usr/local/bin/ 
+    cd -
+    sudo rm -r anew
 
 
     # fix locate
