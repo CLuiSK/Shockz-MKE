@@ -606,6 +606,11 @@ function custom(){
     cd -
     sudo rm -r anew
 
+    # proFTPd
+    echo -e "${cyan}[+] Descargando proFTPd ${end}"
+    sudo apt install proftpd -y
+
+
 
     # fix locate
     sudo updatedb
