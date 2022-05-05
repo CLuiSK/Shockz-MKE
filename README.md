@@ -14,17 +14,17 @@ Recuerda que esta hecho para que funcione para mi user especifico así que si qu
 ### Características que empleo en mis Kali VM's
 
 * **CPU**
-    * 2 Cores y 2 Threads/core
+    * 4 Cores y 2 Threads/core
 * **RAM**
     * 6GB
 * **VHD**
-    * 80 GB
+    * 90 GB
 * **Particiones**
     * Primaria
       * / = 50 GB
     * Lógica
       * /home = 20 GB
-      * /var = 5 GB
+      * /var = 15 GB
       * /swap = 5 GB
 
 ## Instalación:
