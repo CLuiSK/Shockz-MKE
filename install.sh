@@ -324,10 +324,6 @@ function custom(){
     echo -e "${cyan}[+] Instalando scrot ${end}"
     sudo apt-get install scrot -y
 
-    # Instalacion go y ffuf
-    echo -e "${cyan}[+] Instalando go y ffuf ${end}"
-    sudo apt install golang -y
-    git clone https://github.com/ffuf/ffuf ; cd ffuf ; go get ; go build ; cd .. ; rm -r ffuf
 
     # Sudo sin requerir passwd
     echo -e "${cyan}[+] Instalando grantroot ${end}"
@@ -382,28 +378,6 @@ function custom(){
     sudo apt-get install apktool -y
     sudo apt-get install openjdk-11-jdk -y
     sudo apt-get install zipalign -y
-    
-    # Nuclei update
-    echo -e "${cyan}[+] Configuración nuclei ${end}"
-    sudo apt install nuclei
-    nuclei
-
-    # DNSX
-    echo -e "${cyan}[+] Instalando DNSX ${end}"
-    git clone https://github.com/projectdiscovery/dnsx.git
-    cd dnsx/cmd/dnsx
-    go build
-    mv dnsx /usr/local/bin/ 
-    cd -
-    sudo rm -r dnsx
-    # HTTPX
-    echo -e "${cyan}[+] Instalando HTTPX ${end}"
-    git clone https://github.com/projectdiscovery/httpx.git
-    cd httpx/cmd/httpx
-    go build
-    mv httpx /usr/local/bin/
-    cd -
-    sudo rm -r httpx
 
     # ysoserial
     echo -e "${cyan}[+] Instalando ysoserial ${end}"
@@ -445,19 +419,6 @@ function custom(){
     sudo apt install testssl.sh -y
 	
     ##--Subdomains OSINT Threat Intelligence--#
-    # subfinder
-    echo -e "${cyan}[+] Instalando Subfinder ${end}"
-    git clone https://github.com/projectdiscovery/subfinder.git
-    cd subfinder/v2/cmd/subfinder
-    go build
-    mv subfinder /usr/local/bin/
-    cd -
-    sudo rm -r subfinder
-
-    # amass
-    echo -e "${cyan}[+] Instalando Amass ${end}"
-    wget https://github.com/OWASP/Amass/releases/download/v3.17.1/amass_linux_amd64.zip && unzip amass_linux_amd64.zip && mv amass_linux_amd64/amass /usr/local/bin/
-    sudo rm -r amass_linux_amd64*
 
     # aquatone
     echo -e "${cyan}[+] Instalando Aquatone ${end}"
@@ -476,31 +437,6 @@ function custom(){
     echo -e "${cyan}[+] Instalando Prips ${end}"
     git clone https://github.com/honzahommer/prips.sh.git && prips.sh/install.sh /usr/local && sudo rm -r prips.sh
 
-    # Gotator
-    echo -e "${cyan}[+] Instalando Gotator ${end}"
-    git clone https://github.com/Josue87/gotator.git
-    cd gotator
-    go build
-    mv gotator /usr/local/bin/
-    cd -
-    sudo rm -r gotator
-
-    # Gospider
-    echo -e "${cyan}[+] Instalando Gospider ${end}"
-    git clone https://github.com/jaeles-project/gospider.git
-    cd gospider
-    go build
-    mv gospider /usr/local/bin/
-    cd -
-    sudo rm -r gospider
-
-    # unfurl
-    echo -e "${cyan}[+] Instalando Unfurl ${end}"
-    wget https://github.com/tomnomnom/unfurl/releases/download/v0.0.1/unfurl-linux-amd64-0.0.1.tgz
-    tar xzf unfurl-linux-amd64-0.0.1.tgz
-    sudo mv unfurl /usr/bin/
-    rm unfurl-linux-amd64-0.0.1.tgz
-
     ##Spiderfoot
     echo -e "${cyan}[+] Instalando Spiderfoot ${end}"
     git clone https://github.com/smicallef/spiderfoot.git
@@ -512,36 +448,151 @@ function custom(){
     sudo apt install megatools
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
     sudo apt install megatools -y
-    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvVlpvVmtZeUQjY3NLbmpBOXNMb0J0cXBoSmRobktxdWRPX09rOU9uazdVbjlXX1I1N3VQTQ==" | base64 -d)
+    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvQUJCaWhKaUIjdlFtYUFTZGJUTnNQSlA1ajlodVpMSGQyc2g0VV9wZU54MTFsc0QwVkNnWQo=" | base64 -d)
     sudo apt install p7zip-full -y
     7z x Data.7z
     # BurpSuite pro/ burpbounty
     echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
     mv Data/BurpPro /opt
     ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
-    echo -e "${cyan}[+] Configurando apis y ysoserial txt ${end}"
+
+    ###### GO TOOLS #####
+
+    # reconftw y multiples tools de go para bugbounty
+    echo -e "${cyan}[+] Descargando go, reconftw y multiples tools de go para bugbounty${end}"
+    git clone https://github.com/six2dez/reconftw.git
+    cd reconftw/
+    ./install.sh
+
+    # Instalacion go y ffuf
+    # echo -e "${cyan}[+] Instalando go y ffuf ${end}"
+    # sudo apt install golang -y
+    # git clone https://github.com/ffuf/ffuf ; cd ffuf ; go get ; go build ; cd .. ; rm -r ffuf
+
+    # subfinder
+    echo -e "${cyan}[+] Instalando Subfinder ${end}"
+    go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+
+    # git clone https://github.com/projectdiscovery/subfinder.git
+    # cd subfinder/v2/cmd/subfinder
+    # go build
+    # mv subfinder /usr/local/bin/
+    # cd -
+    # sudo rm -r subfinder
+    
+    # ipinfo
+    echo -e "${cyan}[+] Descargando ipinfo ${end}"
+    go install -v github.com/ipinfo/cli/ipinfo@latest
+
+    # git clone https://github.com/ipinfo/cli ipinfo-cli
+    # cd ipinfo-cli
+    # sudo go build -o /usr/local/bin/ ./ipinfo/
+    # cd -
+    # sudo rm -r ipinfo-cli
+
+
+    echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
     subfinder
     mv Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
     mv Data/apis/amass /home/shockz/.config/amass
     mv Data/apis/spiderfoot /home/shockz/.config/spiderfoot
+    mv Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
+    mv Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
+
     rm -r Data*
 
     # freq,gf,waybackurls,airixss,qsreplace
-    echo -e "${cyan}[+] Instalando freq,gf,waybackurls,airixss,qsreplace ${end}"
-    go get -u github.com/takshal/freq
-    go get -u github.com/tomnomnom/gf
-    go get -u github.com/tomnomnom/waybackurls
-    go get -u github.com/ferreiraklet/airixss
-    go get -u github.com/tomnomnom/qsreplace
-    sudo mv go/bin/* /usr/local/bin/
-    sudo rm -r go
+    #echo -e "${cyan}[+] Instalando freq,gf,waybackurls,airixss,qsreplace ${end}"
+    echo -e "${cyan}[+] Instalando freq,airixss ${end}"
+    go install -v github.com/takshal/freq@latest
+    go install -v github.com/ferreiraklet/airixss@latest
+
+    #go get -u github.com/tomnomnom/gf
+    #go get -u github.com/tomnomnom/waybackurls
+    #go get -u github.com/tomnomnom/qsreplace
+    #sudo mv go/bin/* /usr/local/bin/
+    #sudo rm -r go
+
+    # # amass
+    # echo -e "${cyan}[+] Instalando Amass ${end}"
+    # wget https://github.com/OWASP/Amass/releases/download/v3.17.1/amass_linux_amd64.zip && unzip amass_linux_amd64.zip && mv amass_linux_amd64/amass /usr/local/bin/
+    # sudo rm -r amass_linux_amd64*
+
+    # # Gotator
+    # echo -e "${cyan}[+] Instalando Gotator ${end}"
+    # git clone https://github.com/Josue87/gotator.git
+    # cd gotator
+    # go build
+    # mv gotator /usr/local/bin/
+    # cd -
+    # sudo rm -r gotator
+
+    # # Gospider
+    # echo -e "${cyan}[+] Instalando Gospider ${end}"
+    # git clone https://github.com/jaeles-project/gospider.git
+    # cd gospider
+    # go build
+    # mv gospider /usr/local/bin/
+    # cd -
+    # sudo rm -r gospider
+
+    # # unfurl
+    # echo -e "${cyan}[+] Instalando Unfurl ${end}"
+    # wget https://github.com/tomnomnom/unfurl/releases/download/v0.0.1/unfurl-linux-amd64-0.0.1.tgz
+    # tar xzf unfurl-linux-amd64-0.0.1.tgz
+    # sudo mv unfurl /usr/bin/
+    # rm unfurl-linux-amd64-0.0.1.tgz
+
+    # # Nuclei update
+    # echo -e "${cyan}[+] Configuración nuclei ${end}"
+    # sudo apt install nuclei
+    # nuclei
+
+    # # DNSX
+    # echo -e "${cyan}[+] Instalando DNSX ${end}"
+    # git clone https://github.com/projectdiscovery/dnsx.git
+    # cd dnsx/cmd/dnsx
+    # go build
+    # mv dnsx /usr/local/bin/ 
+    # cd -
+    # sudo rm -r dnsx
+    # # HTTPX
+    # echo -e "${cyan}[+] Instalando HTTPX ${end}"
+    # git clone https://github.com/projectdiscovery/httpx.git
+    # cd httpx/cmd/httpx
+    # go build
+    # mv httpx /usr/local/bin/
+    # cd -
+    # sudo rm -r httpx
 
     # gf patterns
-    git clone https://github.com/1ndianl33t/Gf-Patterns
-    mkdir /home/shockz/.gf
-    mv /home/shockz/Gf-Patterns/*.json /home/shockz/.gf
+    #git clone https://github.com/1ndianl33t/Gf-Patterns
+    #mkdir /home/shockz/.gf
+    #mv /home/shockz/Gf-Patterns/*.json /home/shockz/.gf
+
+    # anew
+    #echo -e "${cyan}[+] Descargando anew ${end}"
+    #git clone https://github.com/tomnomnom/anew.git
+    #cd anew
+    #go build
+    #chmod +x anew
+    # sudo mv anew /usr/local/bin/ 
+    # cd -
+    # sudo rm -r anew
+
+    # # gau
+    # echo -e "${cyan}[+] Descargando gau ${end}"
+    # git clone https://github.com/lc/gau.git
+    # cd gau/cmd/gau
+    # go build
+    # chmod +x gau
+    # sudo mv gau /usr/local/bin/ 
+    # cd -
+    # sudo rm -r gau
+
+    ############################
 
     # uro
     echo -e "${cyan}[+] Instalando uro ${end}"
@@ -579,16 +630,6 @@ function custom(){
     sudo mv naabu /usr/local/bin/ 
     sudo rm naabu_2.0.5_linux_amd64.zip
 
-    # gau
-    echo -e "${cyan}[+] Descargando gau ${end}"
-    git clone https://github.com/lc/gau.git
-    cd gau/cmd/gau
-    go build
-    chmod +x gau
-    sudo mv gau /usr/local/bin/ 
-    cd -
-    sudo rm -r gau
-
     # findomain
     echo -e "${cyan}[+] Descargando findomain ${end}"
     wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
@@ -596,20 +637,23 @@ function custom(){
     mv findomain-linux findomain
     sudo mv findomain /usr/local/bin/
 
-    # anew
-    echo -e "${cyan}[+] Descargando anew ${end}"
-    git clone https://github.com/tomnomnom/anew.git
-    cd anew
-    go build
-    chmod +x anew
-    sudo mv anew /usr/local/bin/ 
-    cd -
-    sudo rm -r anew
-
     # proFTPd
     echo -e "${cyan}[+] Descargando proFTPd ${end}"
     sudo apt install proftpd -y
 
+
+    # hyperfine
+    echo -e "${cyan}[+] Descargando hyperfine ${end}"
+    wget https://github.com/sharkdp/hyperfine/releases/download/v1.13.0/hyperfine_1.13.0_amd64.deb
+    sudo dpkg -i hyperfine_1.13.0_amd64.deb
+    rm hyperfine_1.13.0_amd64.deb
+
+    # Udork
+    echo -e "${cyan}[+] Descargando uDork ${end}"
+    git clone https://github.com/m3n0sd0n4ld/uDork
+    chmod +x uDork/uDork.sh
+    filename=$(cat Data/apis/uDork)
+    sed -ie "s/cookies=\"c_user=HEREYOUCOOKIE; xs=HEREYOUCOOKIE;\"/${filename}/g" uDork.sh
 
 
     # fix locate
