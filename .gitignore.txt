@@ -1,1 +1,2 @@
 compressed data.txt
+manual_data.txt

@@ -350,7 +350,7 @@ function custom(){
     git clone https://github.com/SecureAuthCorp/impacket.git
     cd impacket
     pip3 install .
-    cd .. && sudo rm -r impacket
+    cd - && sudo rm -r impacket
     
     # SMTP enum
     echo -e "${cyan}[+] Instalando smtp enum ${end}"
@@ -393,7 +393,7 @@ function custom(){
 	cd mitm6
 	python3 -m pip install -r requirements.txt
 	python3 setup.py install
-	cd .. && sudo rm -r mitm6/
+	cd - && sudo rm -r mitm6/
 	
 	# ldapdomaindump
     echo -e "${cyan}[+] Instalando ldapdomaindump ${end}"
@@ -462,7 +462,8 @@ function custom(){
     echo -e "${cyan}[+] Descargando go, reconftw y multiples tools de go para bugbounty${end}"
     git clone https://github.com/six2dez/reconftw.git
     cd reconftw/
-    ./install.sh
+    su shockz -c "./install.sh"
+    cd -
 
     # Instalacion go y ffuf
     # echo -e "${cyan}[+] Instalando go y ffuf ${end}"
