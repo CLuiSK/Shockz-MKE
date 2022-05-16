@@ -504,9 +504,10 @@ function custom(){
 
     # freq,gf,waybackurls,airixss,qsreplace
     #echo -e "${cyan}[+] Instalando freq,gf,waybackurls,airixss,qsreplace ${end}"
-    echo -e "${cyan}[+] Instalando freq,airixss ${end}"
+    echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
     go install -v github.com/ferreiraklet/airixss@latest
+    go install -v github.com/lc/gau/v2/cmd/gau@latest
 
     #go get -u github.com/tomnomnom/gf
     #go get -u github.com/tomnomnom/waybackurls
