@@ -502,8 +502,6 @@ function custom(){
     mv Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
     mv Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
 
-    rm -r Data*
-
     # freq,gf,waybackurls,airixss,qsreplace
     #echo -e "${cyan}[+] Instalando freq,gf,waybackurls,airixss,qsreplace ${end}"
     echo -e "${cyan}[+] Instalando freq,airixss ${end}"
@@ -668,6 +666,7 @@ function custom(){
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
+    rm -r Data*
 }
 
 
