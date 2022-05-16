@@ -457,9 +457,19 @@ function custom(){
     ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
     ###### GO TOOLS #####
+    echo -e "${cyan}[+] Descargando go${end}"
+    # Instalacion de go
+    version=$(curl -L -s https://golang.org/VERSION?m=text)
+    wget https://dl.google.com/go/${version}.linux-amd64.tar.gz
+    tar -C /usr/local -xzf ${version}.linux-amd64.tar.gz
+    ln -sf /usr/local/go/bin/go /usr/local/bin/
+    rm -rf $version*
+    export GOROOT=/usr/local/go
+    export GOPATH=$HOME/go
+    export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 
     # reconftw y multiples tools de go para bugbounty
-    echo -e "${cyan}[+] Descargando go, reconftw y multiples tools de go para bugbounty${end}"
+    echo -e "${cyan}[+] Descargando reconftw y multiples tools de go para bugbounty${end}"
     git clone https://github.com/six2dez/reconftw.git
     cd reconftw/
     su shockz -c "./install.sh"
@@ -507,7 +517,6 @@ function custom(){
     echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
     go install -v github.com/ferreiraklet/airixss@latest
-    go install -v github.com/lc/gau/v2/cmd/gau@latest
 
     #go get -u github.com/tomnomnom/gf
     #go get -u github.com/tomnomnom/waybackurls
