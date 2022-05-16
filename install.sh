@@ -451,6 +451,9 @@ function custom(){
     megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvQUJCaWhKaUIjdlFtYUFTZGJUTnNQSlA1ajlodVpMSGQyc2g0VV9wZU54MTFsc0QwVkNnWQo=" | base64 -d)
     sudo apt install p7zip-full -y
     7z x Data.7z
+    while [ $? -ne 0 ]; do
+        7z x Data.7z
+    done
     # BurpSuite pro/ burpbounty
     echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
     mv Data/BurpPro /opt
