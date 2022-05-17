@@ -665,7 +665,7 @@ function custom(){
     git clone https://github.com/m3n0sd0n4ld/uDork
     chmod +x uDork/uDork.sh
     filename=$(cat Data/apis/uDork)
-    sed -ie "s/cookies=\"c_user=HEREYOUCOOKIE; xs=HEREYOUCOOKIE;\"/${filename}/g" uDork.sh
+    sed -ie "s/cookies=\"c_user=HEREYOUCOOKIE; xs=HEREYOUCOOKIE;\"/${filename}/g" uDork/uDork.sh
 
 
     # fix locate
