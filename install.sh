@@ -673,6 +673,13 @@ function custom(){
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
     rm kubectl
 
+    # Install bloodhound
+    sudo apt-get install neo4j bloodhound -y
+    
+
+    # Instalacion de pwncat
+    pip install pwncat-cs
+
     # fix locate
     sudo updatedb
 
