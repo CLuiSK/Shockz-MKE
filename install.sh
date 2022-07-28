@@ -186,6 +186,8 @@ function custom(){
     # Teclado español
     sudo setxkbmap -layout 'es,es' -model pc105
 
+    sudo rmmod pcspkr
+
     # Firefox + Firejail
     # Permisos para futuras herramientas
     chown shockz:shockz /opt
