@@ -151,6 +151,3 @@ Wappalyzer, Hunter, EditThisCookie, IP Address and Domain Information
 
 ## Configuración manual:
 - Editar el código a gusto
-
-## Autor
-- Jorge Manuel Lozano Gómez
