@@ -186,6 +186,7 @@ function custom(){
     # Teclado español
     sudo setxkbmap -layout 'es,es' -model pc105
 
+    # quitar pitido
     sudo rmmod pcspkr
 
     # Firefox + Firejail
@@ -411,6 +412,7 @@ function custom(){
 	git clone https://github.com/Hackplayers/evil-winrm.git
 	mv evil-winrm /usr/bin/
     chmod +x /usr/bin/evil-winrm
+    gem install evil-winrm
 	
 	# shcheck.py
     echo -e "${cyan}[+] Instalando shcheck ${end}"
@@ -675,9 +677,19 @@ function custom(){
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
     rm kubectl
 
+    # Install cme
+    wget https://github.com/Porchetta-Industries/CrackMapExec/releases/download/v5.3.0/cme-ubuntu-latest-3.10.zip
+    unzip cme-ubuntu-latest-3.10.zip
+    chmod +x cme
+    sudo mv cme /usr/bin
+    rm cme-ubuntu-latest-3.10.zip
+
+
     # Install bloodhound
     sudo apt-get install neo4j bloodhound -y
     
+    # Extension de searchsploit
+    apt -y install exploitdb exploitdb-papers
 
     # Instalacion de pwncat
     pip install pwncat-cs
