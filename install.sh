@@ -13,9 +13,6 @@ rootPath=/root
 file=$(readlink -f $0)
 current_path=$(dirname $file)
 
-
-# COSAS DE MI MKE = ZSHRC SCRIPTS
-
 function user_shockz(){
 
     echo -e "${cyan} [*] Instalando dependencias ${end}"
@@ -89,9 +86,7 @@ function user_shockz(){
     # Si se va usar root como user en login
     #sudo cp -r $current_path/config /root/.config
     chown -R shockz:shockz $userPath/.config
-
-    #chmod +x $userPath/.config/bspwm/bspwmrc
-    #chmod +x $userPath/.config/bspwm/scripts/bspwm_resize
+    chmod +x $userPath/.config/polybar/scripts/*
 
     # Fuentes polybar
     echo -e "${cyan} [*] Estableciendo las fuentes para la polybar ${end}"
@@ -102,26 +97,6 @@ function user_shockz(){
     cd $userPath
     # Eliminamos el repo
     rm -r $userPath/Descargas/blue-sky
-
-
-    # Permisos de ejecucion a scripts de polybar
-    #echo -e "${cyan} [*] Dando permisos a los scripts del entorno ${end}"
-    #chmod +x $userPath/.config/bin/*
-    #chmod +x $userPath/.config/polybar/scripts/powermenu_alt
-    # DEBERIA LLEGAR CON EL ANTERIOR 
-
-    # Lock
-    #sudo apt update
-    #echo "Seleccionar slim"
-    #sudo apt install slim libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev -y 
-    #cd $userPath/Descargas/
-    #git clone https://github.com/joelburget/slimlock.git
-    #cd slimlock/ && sudo make && sudo make install
-    #cd $userPath/Descargas/blue-sky/slim
-    #sudo cp slim.conf /etc/
-    #sudo cp slimlock.conf /etc
-    #sudo cp -r default /usr/share/slim/themes
-
 
     # POWERLEVEL 10K
     echo -e "${cyan} [*] Instalando y configurando powerlevel10k ${end}"
@@ -313,6 +288,9 @@ function custom(){
     sudo dpkg -i rustscan_2.0.1_amd64.deb
     rm rustscan_2.0.1_amd64.deb
 
+    echo -e "${cyan}[+] Instalando bc (network_trafic) ${end}"
+    sudo apt-get install -y bc
+
     echo -e "${cyan}[+] Instalando play ${end}"
     # Instalacion play    
     sudo apt install sox -y
@@ -482,32 +460,13 @@ function custom(){
     su shockz -c "./install.sh"
     cd -
 
-    # Instalacion go y ffuf
-    # echo -e "${cyan}[+] Instalando go y ffuf ${end}"
-    # sudo apt install golang -y
-    # git clone https://github.com/ffuf/ffuf ; cd ffuf ; go get ; go build ; cd .. ; rm -r ffuf
-
     # subfinder
     echo -e "${cyan}[+] Instalando Subfinder ${end}"
     go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-
-    # git clone https://github.com/projectdiscovery/subfinder.git
-    # cd subfinder/v2/cmd/subfinder
-    # go build
-    # mv subfinder /usr/local/bin/
-    # cd -
-    # sudo rm -r subfinder
     
     # ipinfo
     echo -e "${cyan}[+] Descargando ipinfo ${end}"
     go install -v github.com/ipinfo/cli/ipinfo@latest
-
-    # git clone https://github.com/ipinfo/cli ipinfo-cli
-    # cd ipinfo-cli
-    # sudo go build -o /usr/local/bin/ ./ipinfo/
-    # cd -
-    # sudo rm -r ipinfo-cli
-
 
     echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
     mv Data/ysoserial_payloaders /opt
@@ -519,96 +478,9 @@ function custom(){
     mv Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
     mv Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
 
-    # freq,gf,waybackurls,airixss,qsreplace
-    #echo -e "${cyan}[+] Instalando freq,gf,waybackurls,airixss,qsreplace ${end}"
     echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
     go install -v github.com/ferreiraklet/airixss@latest
-
-    #go get -u github.com/tomnomnom/gf
-    #go get -u github.com/tomnomnom/waybackurls
-    #go get -u github.com/tomnomnom/qsreplace
-    #sudo mv go/bin/* /usr/local/bin/
-    #sudo rm -r go
-
-    # # amass
-    # echo -e "${cyan}[+] Instalando Amass ${end}"
-    # wget https://github.com/OWASP/Amass/releases/download/v3.17.1/amass_linux_amd64.zip && unzip amass_linux_amd64.zip && mv amass_linux_amd64/amass /usr/local/bin/
-    # sudo rm -r amass_linux_amd64*
-
-    # # Gotator
-    # echo -e "${cyan}[+] Instalando Gotator ${end}"
-    # git clone https://github.com/Josue87/gotator.git
-    # cd gotator
-    # go build
-    # mv gotator /usr/local/bin/
-    # cd -
-    # sudo rm -r gotator
-
-    # # Gospider
-    # echo -e "${cyan}[+] Instalando Gospider ${end}"
-    # git clone https://github.com/jaeles-project/gospider.git
-    # cd gospider
-    # go build
-    # mv gospider /usr/local/bin/
-    # cd -
-    # sudo rm -r gospider
-
-    # # unfurl
-    # echo -e "${cyan}[+] Instalando Unfurl ${end}"
-    # wget https://github.com/tomnomnom/unfurl/releases/download/v0.0.1/unfurl-linux-amd64-0.0.1.tgz
-    # tar xzf unfurl-linux-amd64-0.0.1.tgz
-    # sudo mv unfurl /usr/bin/
-    # rm unfurl-linux-amd64-0.0.1.tgz
-
-    # # Nuclei update
-    # echo -e "${cyan}[+] Configuración nuclei ${end}"
-    # sudo apt install nuclei
-    # nuclei
-
-    # # DNSX
-    # echo -e "${cyan}[+] Instalando DNSX ${end}"
-    # git clone https://github.com/projectdiscovery/dnsx.git
-    # cd dnsx/cmd/dnsx
-    # go build
-    # mv dnsx /usr/local/bin/ 
-    # cd -
-    # sudo rm -r dnsx
-    # # HTTPX
-    # echo -e "${cyan}[+] Instalando HTTPX ${end}"
-    # git clone https://github.com/projectdiscovery/httpx.git
-    # cd httpx/cmd/httpx
-    # go build
-    # mv httpx /usr/local/bin/
-    # cd -
-    # sudo rm -r httpx
-
-    # gf patterns
-    #git clone https://github.com/1ndianl33t/Gf-Patterns
-    #mkdir /home/shockz/.gf
-    #mv /home/shockz/Gf-Patterns/*.json /home/shockz/.gf
-
-    # anew
-    #echo -e "${cyan}[+] Descargando anew ${end}"
-    #git clone https://github.com/tomnomnom/anew.git
-    #cd anew
-    #go build
-    #chmod +x anew
-    # sudo mv anew /usr/local/bin/ 
-    # cd -
-    # sudo rm -r anew
-
-    # # gau
-    # echo -e "${cyan}[+] Descargando gau ${end}"
-    # git clone https://github.com/lc/gau.git
-    # cd gau/cmd/gau
-    # go build
-    # chmod +x gau
-    # sudo mv gau /usr/local/bin/ 
-    # cd -
-    # sudo rm -r gau
-
-    ############################
 
     # uro
     echo -e "${cyan}[+] Instalando uro ${end}"
@@ -683,7 +555,6 @@ function custom(){
     chmod +x cme
     sudo mv cme /usr/bin
     rm cme-ubuntu-latest-3.10.zip
-
 
     # Install bloodhound
     sudo apt-get install neo4j bloodhound -y

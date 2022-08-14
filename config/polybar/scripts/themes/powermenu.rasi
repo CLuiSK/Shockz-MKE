@@ -20,10 +20,10 @@ window {
     background-color:               @background;
     text-color:                     @foreground;
     border-radius:                  20px;
-    height:                         27%;
+    height:                         19%;
     width:                          17%;
-    x-offset:                       30;
-    y-offset:                       -90;
+    x-offset:                       0.7%;
+    y-offset:                       -67%;
 }
 
 prompt {

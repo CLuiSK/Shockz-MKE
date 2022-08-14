@@ -24,18 +24,19 @@ autoload -Uz promptinit
 promptinit
 prompt adam1
 
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-ISTSIZE=5000
+HISTSIZE=5000
 HISTFILE=~/.zsh_history 
 SAVEHIST=10000
 
 setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+
+
 
 # Use modern completion system
 autoload -Uz compinit
@@ -87,6 +88,7 @@ alias nserv='nmap -sS -sV -sC --min-rate 2000 -v -n -Pn -oG targetered'
 alias burpro='java -javaagent:/opt/BurpPro/BurpSuiteLoader_v2021.12.1.jar -noverify -jar /opt/BurpPro/burpsuite_pro_v2021.12.1.jar'
 alias server='/usr/bin/python3 -m http.server 80'
 alias spiderfoot='python3 /opt/spiderfoot/sf.py -l 127.0.0.1:5001'
+alias cme='/usr/bin/cme'
 
 
 
@@ -157,11 +159,11 @@ function rmk(){
 
 function settarget(){
     target=$1
-    echo "$target" > /home/shockz/.config/bin/target
+    echo "$target" > /home/shockz/.config/polybar/scripts/target
 }
 
 function cleartarget(){
-    echo '' > /home/shockz/.config/bin/target
+    echo '' > /home/shockz/.config/polybar/scripts/target
 }
 
 
@@ -171,3 +173,8 @@ function cleartarget(){
 (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
 
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+# Golang vars
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH

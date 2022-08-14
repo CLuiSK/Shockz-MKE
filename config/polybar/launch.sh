@@ -1,28 +1,26 @@
 #!/usr/bin/env sh
 
-## Add this to your wm startup file.
-
-# Terminate already running bar instances
+# Terminar las instancias de barra que ya se están ejecutando
 killall -q polybar
 
-## Wait until the processes have been shut down
+# Espere hasta que los procesos se hayan cerrado.
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-## Launch
+# Barra superior
+polybar apagado -c ~/.config/polybar/current.ini &
+polybar kali -c ~/.config/polybar/current.ini &
+polybar platform -c ~/.config/polybar/current.ini &
+polybar target -c ~/.config/polybar/current.ini &
+polybar menu -c ~/.config/polybar/current.ini &
+polybar files -c ~/.config/polybar/current.ini &
+polybar browser -c ~/.config/polybar/current.ini &
+polybar burp -c ~/.config/polybar/current.ini &
+polybar escritorios -c ~/.config/polybar/current.ini &
 
-## Left bar
-polybar log -c ~/.config/polybar/current.ini &
-polybar third -c ~/.config/polybar/current.ini &
-polybar fourth -c ~/.config/polybar/current.ini &
-#polybar fifth -c ~/.config/polybar/current.ini &
-polybar sixth -c ~/.config/polybar/current.ini &
-
-## Right bar
-#polybar top -c ~/.config/polybar/current.ini &
-polybar first -c ~/.config/polybar/current.ini &
-polybar second -c ~/.config/polybar/current.ini &
-polybar seventh -c ~/.config/polybar/current.ini &
-polybar eighth -c ~/.config/polybar/current.ini &
-
-## Center bar
-polybar primary -c ~/.config/polybar/workspace.ini &
+# Barra inferior
+polybar icono -c ~/.config/polybar/current.ini &
+polybar hora -c ~/.config/polybar/current.ini &
+polybar procesador -c ~/.config/polybar/current.ini &
+polybar memoria -c ~/.config/polybar/current.ini &
+polybar network-trafic -c ~/.config/polybar/current.ini &
+polybar volumen -c ~/.config/polybar/current.ini &
