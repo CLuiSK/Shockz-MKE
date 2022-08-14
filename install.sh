@@ -161,9 +161,6 @@ function custom(){
     # Teclado español
     sudo setxkbmap -layout 'es,es' -model pc105
 
-    # quitar pitido
-    sudo rmmod pcspkr
-
     # Firefox + Firejail
     # Permisos para futuras herramientas
     chown shockz:shockz /opt
@@ -176,11 +173,12 @@ function custom(){
 
     echo -e "${cyan} [*] Copiando custom scripts ${end}"
     # Script para habilitar copy-paste en vmware
-    sudo cp $current_path/scripts/copy_paste.sh $userPath/.config/bin/
+    mkdir $userPath/.config/bin
+    sudo cp $current_path/scripts/copy_paste.sh $userPath/.config/bin/copy_paste.sh
     chmod +x $userPath/.config/bin/copy_paste.sh && chown shockz:shockz $userPath/.config/bin/copy_paste.sh
 
     # Script tty
-    sudo cp $current_path/scripts/tty.sh $userPath/.config/bin/
+    sudo cp $current_path/scripts/tty.sh $userPath/.config/bin/tty.sh
     chmod +x $userPath/.config/bin/tty.sh && chown shockz:shockz $userPath/.config/bin/tty.sh
 
     # tools
@@ -197,7 +195,7 @@ function custom(){
     #------ Diccionarios  ------#
     echo -e "${cyan}[+] Extrayendo rockyou${end}"
     gunzip /usr/share/wordlists/rockyou.txt.gz
-    rm /usr/share/wordlists/rockyou.txt.gz
+
     sudo apt-get install lftp -y
     wordlist_path=$current_path/wordlists
     
@@ -386,10 +384,6 @@ function custom(){
 	
 	# Evil-winrm
     echo -e "${cyan}[+] Instalando Evil-winrm ${end}"
-	sudo gem install winrm winrm-fs stringio
-	git clone https://github.com/Hackplayers/evil-winrm.git
-	mv evil-winrm /usr/bin/
-    chmod +x /usr/bin/evil-winrm
     gem install evil-winrm
 	
 	# shcheck.py
@@ -427,9 +421,8 @@ function custom(){
 
     # MEGA TOOLS
     echo -e "${cyan}[+] Instalando Megatools ${end}"
-    sudo apt install megatools
-    echo -e "${cyan}[+] Descomprimiendo data ${end}"
     sudo apt install megatools -y
+    echo -e "${cyan}[+] Descomprimiendo data ${end}"
     megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvQUJCaWhKaUIjdlFtYUFTZGJUTnNQSlA1ajlodVpMSGQyc2g0VV9wZU54MTFsc0QwVkNnWQo=" | base64 -d)
     sudo apt install p7zip-full -y
     7z x Data.7z
@@ -455,6 +448,7 @@ function custom(){
 
     # reconftw y multiples tools de go para bugbounty
     echo -e "${cyan}[+] Descargando reconftw y multiples tools de go para bugbounty${end}"
+    cd /home/shockz
     git clone https://github.com/six2dez/reconftw.git
     cd reconftw/
     su shockz -c "./install.sh"
@@ -568,6 +562,10 @@ function custom(){
     # fix locate
     sudo updatedb
 
+    # quitar pitido
+    sudo rmmod pcspkr
+
+
 	# Devolviendo permisos a Shockz
 	sudo chown -R shockz:shockz /home/shockz/*
 	sudo chmod +x -R  /home/shockz/*
@@ -576,7 +574,7 @@ function custom(){
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
-    rm -r Data*
+    sudo rm -r Data*
 }
 
 
