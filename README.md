@@ -45,8 +45,8 @@ git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x 
 
 ## Vista general
 
-![General](https://user-images.githubusercontent.com/67438760/126847865-92514f2c-7dc9-4296-91a1-44840a7c99e3.png)
-
+![General](https://user-images.githubusercontent.com/67438760/184545803-51ab2b37-38c6-498c-9923-22dbc329039e.png)
+![Rofi](https://user-images.githubusercontent.com/67438760/184545805-9f323d20-e6ef-4cc0-b0e7-1582d59116bc.png)
 
 
 ## Utilidades:
@@ -86,14 +86,23 @@ git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x 
 #### Atajos zsh
 
 <kbd>Ctrl</kbd> + <kbd>A</kbd> : Principio de línea
+
 <kbd>Ctrl</kbd> + <kbd>E</kbd> : final de línea
+
 <kbd>Ctrl</kbd> + <kbd>L</kbd> :  Limpiar consola
+
 <kbd>Alt</kbd> + <kbd>Q</kbd> :  Borra toda la línea
+
 <kbd>Alt</kbd> + <kbd>Backspace</kbd> : Elimina la palabra anterior al cursor
+
 <kbd>Alt</kbd> + <kbd>D</kbd> :  Elimina la palabra posterior al cursor
+
 <kbd>Ctrl</kbd> + <kbd>K</kbd> :  Elimina todo lo que hay detrás del cursor
+
 <kbd>Ctrl</kbd> + <kbd>D</kbd> :  Funciona igual que la tecla suprimir
+
 <kbd>Ctrl</kbd> + <kbd>U</kbd> :  Elimina la línea entera y la guarda en el framebuffer
+
 <kbd>Ctrl</kbd> + <kbd>Y</kbd> :  Pega el frambuffer
 
 ## Funcionalidades y Atajos
