@@ -182,8 +182,8 @@ function custom(){
     chmod +x $userPath/.config/bin/tty.sh && chown shockz:shockz $userPath/.config/bin/tty.sh
 
     # tools
-    echo -e "${cyan} [*] Copiando enum_priv_esc_tools ${end}"
-    unzip $current_path/priv_esc_tools.zip -d $userPath
+    echo -e "${cyan} [*] Copiando tools ${end}"
+    7z x $current_path/tools.zip -d $userPath
 
     # Configuracion SSH
     echo -e "${cyan}[+] Aplicando configuracion ssh${end}"
