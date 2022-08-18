@@ -183,7 +183,7 @@ function custom(){
 
     # tools
     echo -e "${cyan} [*] Copiando tools ${end}"
-    7z x $current_path/tools.zip -d $userPath
+    7z x $current_path/tools.zip -o$userPath
 
     # Configuracion SSH
     echo -e "${cyan}[+] Aplicando configuracion ssh${end}"
@@ -425,13 +425,13 @@ function custom(){
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
     megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvQUJCaWhKaUIjdlFtYUFTZGJUTnNQSlA1ajlodVpMSGQyc2g0VV9wZU54MTFsc0QwVkNnWQo=" | base64 -d)
     sudo apt install p7zip-full -y
-    7z x Data.7z
+    cd $userPath
     while [ $? -ne 0 ]; do
         7z x Data.7z
     done
     # BurpSuite pro/ burpbounty
     echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
-    mv Data/BurpPro /opt
+    cp -r Data/BurpPro /opt
     ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
     ###### GO TOOLS #####
@@ -466,11 +466,13 @@ function custom(){
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
     subfinder
-    mv Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
-    mv Data/apis/amass /home/shockz/.config/amass
-    mv Data/apis/spiderfoot /home/shockz/.config/spiderfoot
-    mv Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
-    mv Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
+
+    cd $userPath
+    cp Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
+    cp -r Data/apis/amass /home/shockz/.config/amass
+    cp -r Data/apis/spiderfoot /home/shockz/.config/spiderfoot
+    cp Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
+    cp Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
 
     echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
@@ -579,18 +581,17 @@ function custom(){
 
 
 # https://patorjk.com/software/taag/#p=display&h=0&f=Delta%20Corps%20Priest%201&t=Shockz%20MKE
-echo -e "
 
-   ▄████████    ▄█    █▄     ▄██████▄   ▄████████    ▄█   ▄█▄  ▄███████▄          ▄▄▄▄███▄▄▄▄      ▄█   ▄█▄    ▄████████ 
-  ███    ███   ███    ███   ███    ███ ███    ███   ███ ▄███▀ ██▀     ▄██       ▄██▀▀▀███▀▀▀██▄   ███ ▄███▀   ███    ███ 
-  ███    █▀    ███    ███   ███    ███ ███    █▀    ███▐██▀         ▄███▀       ███   ███   ███   ███▐██▀     ███    █▀  
-  ███         ▄███▄▄▄▄███▄▄ ███    ███ ███         ▄█████▀     ▀█▀▄███▀▄▄       ███   ███   ███  ▄█████▀     ▄███▄▄▄     
-▀███████████ ▀▀███▀▀▀▀███▀  ███    ███ ███        ▀▀█████▄      ▄███▀   ▀       ███   ███   ███ ▀▀█████▄    ▀▀███▀▀▀     
-         ███   ███    ███   ███    ███ ███    █▄    ███▐██▄   ▄███▀             ███   ███   ███   ███▐██▄     ███    █▄  
-   ▄█    ███   ███    ███   ███    ███ ███    ███   ███ ▀███▄ ███▄     ▄█       ███   ███   ███   ███ ▀███▄   ███    ███ 
- ▄████████▀    ███    █▀     ▀██████▀  ████████▀    ███   ▀█▀  ▀████████▀        ▀█   ███   █▀    ███   ▀█▀   ██████████ 
-                                                    ▀                                             ▀                      
-"
+echo -e "                                                                                                                         "
+echo -e "   ▄████████    ▄█    █▄     ▄██████▄   ▄████████    ▄█   ▄█▄  ▄███████▄          ▄▄▄▄███▄▄▄▄      ▄█   ▄█▄    ▄████████ "
+echo -e "  ███    ███   ███    ███   ███    ███ ███    ███   ███ ▄███▀ ██▀     ▄██       ▄██▀▀▀███▀▀▀██▄   ███ ▄███▀   ███    ███ "
+echo -e "  ███    █▀    ███    ███   ███    ███ ███    █▀    ███▐██▀         ▄███▀       ███   ███   ███   ███▐██▀     ███    █▀  "
+echo -e "  ███         ▄███▄▄▄▄███▄▄ ███    ███ ███         ▄█████▀     ▀█▀▄███▀▄▄       ███   ███   ███  ▄█████▀     ▄███▄▄▄     "
+echo -e "▀███████████ ▀▀███▀▀▀▀███▀  ███    ███ ███        ▀▀█████▄      ▄███▀   ▀       ███   ███   ███ ▀▀█████▄    ▀▀███▀▀▀     "
+echo -e "         ███   ███    ███   ███    ███ ███    █▄    ███▐██▄   ▄███▀             ███   ███   ███   ███▐██▄     ███    █▄  "
+echo -e "   ▄█    ███   ███    ███   ███    ███ ███    ███   ███ ▀███▄ ███▄     ▄█       ███   ███   ███   ███ ▀███▄   ███    ███ "
+echo -e " ▄████████▀    ███    █▀     ▀██████▀  ████████▀    ███   ▀█▀  ▀████████▀        ▀█   ███   █▀    ███   ▀█▀   ██████████ "
+echo -e "                                                    ▀                                             ▀                      "
 
 #Se comprueban los privilegios
 [ "$(id -u)" -ne 0 ] && (echo -e "${red} [!] Este script debe ejecutarse con privilegios root ${end}" >&2) && exit 1;
