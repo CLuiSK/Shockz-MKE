@@ -15,6 +15,7 @@ polybar menu -c ~/.config/polybar/current.ini &
 polybar files -c ~/.config/polybar/current.ini &
 polybar browser -c ~/.config/polybar/current.ini &
 polybar burp -c ~/.config/polybar/current.ini &
+polybar public_ip -c ~/.config/polybar/current.ini &
 polybar escritorios -c ~/.config/polybar/current.ini &
 
 # Barra inferior

@@ -1,6 +1,6 @@
 
 # Archivo para habilitar copy paste en vmware
-/home/shockz/.config/bin/copy_paste.sh &
+#/home/shockz/.config/bin/copy_paste.sh &
 # Fix resdimensionalizacion de vmware
 #wmname LG3D 1> /dev/null &
 
@@ -83,12 +83,14 @@ alias tty='/home/shockz/.config/bin/tty.sh'
 alias ch='/usr/bin/chmod +x'
 alias wg='wget -H -r --level=1 -k -p'
 alias autorecon='python3 /usr/bin/AutoRecon/autorecon.py'
-alias nports='nmap -p- --open -sS --min-rate 2000 -v -n -Pn -oG allPorts'
-alias nserv='nmap -sS -sV -sC --min-rate 2000 -v -n -Pn -oG targetered'
+alias nports='nmap -p- --open -sS --min-rate 2000 -vvv -n -Pn -oG allPorts'
+alias nserv='nmap -sS -A --min-rate 2000 -vvv -n -Pn -oG targetered'
 alias burpro='java -javaagent:/opt/BurpPro/BurpSuiteLoader_v2021.12.1.jar -noverify -jar /opt/BurpPro/burpsuite_pro_v2021.12.1.jar'
 alias spiderfoot='python3 /opt/spiderfoot/sf.py -l 127.0.0.1:5001'
 alias cme='/usr/bin/cme'
 alias server='python3 -m http.server 80 -d'
+alias smb='impacket-smbserver -smb2support shared $(pwd)'
+alias ffufz='f() { ffuf -c -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
 
 
 
@@ -166,7 +168,9 @@ function cleartarget(){
     echo '' > /home/shockz/.config/polybar/scripts/target
 }
 
-
+function transfer() {
+        curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | xclip -i -sel p -f | xclip -i -sel c
+}
 
 
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.

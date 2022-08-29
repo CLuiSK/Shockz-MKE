@@ -16,7 +16,7 @@ current_path=$(dirname $file)
 function user_shockz(){
 
     echo -e "${cyan} [*] Instalando dependencias ${end}"
-    apt-get update && apt-get upgrade -y
+    apt-get update && apt-get upgrade -y && apt-get full-upgrade -y
     apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev -y
     sudo apt update && sudo apt install cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev -y
     sudo apt update
@@ -160,6 +160,10 @@ function custom(){
     echo -e "${cyan} [*] Aplicando cambios a nivel de sistema ${end}"
     # Teclado español
     sudo setxkbmap -layout 'es,es' -model pc105
+
+    # FIXES RAM Lightdm
+    sudo sed -i 's/#lock-memory=true/lock-memory=false/g' /etc/lightdm/lightdm.conf
+    sudo sync; sudo echo 3 > /proc/sys/vm/drop_caches
 
     # Firefox + Firejail
     # Permisos para futuras herramientas
@@ -525,6 +529,13 @@ function custom(){
     echo -e "${cyan}[+] Descargando proFTPd ${end}"
     sudo apt install proftpd -y
 
+    # ssh-audit
+    echo -e "${cyan}[+] Descargando ssh-audit ${end}"
+    pip3 install ssh-audit
+
+    # i686-w64-mingw32-gcc
+    echo -e "${cyan}[+] Descargando i686-w64-mingw32-gcc ${end}"
+    apt-get install gcc-mingw-w64-i686 -y
 
     # hyperfine
     echo -e "${cyan}[+] Descargando hyperfine ${end}"
