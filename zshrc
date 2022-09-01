@@ -90,7 +90,7 @@ alias spiderfoot='python3 /opt/spiderfoot/sf.py -l 127.0.0.1:5001'
 alias cme='/usr/bin/cme'
 alias server='python3 -m http.server 80 -d'
 alias smb='impacket-smbserver -smb2support shared $(pwd)'
-alias ffufz='f() { ffuf -c -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
+alias ffufz='f() { ffuf -c -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
 
 
 
