@@ -91,7 +91,7 @@ alias cme='/usr/bin/cme'
 alias server='python3 -m http.server 80 -d'
 alias smb='impacket-smbserver -smb2support shared $(pwd)'
 alias ffufz='f() { ffuf -c -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
-
+alias recon='/home/shockz/.config/bin/recon.sh'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

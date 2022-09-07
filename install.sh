@@ -176,14 +176,11 @@ function custom(){
     update-alternatives --config java
 
     echo -e "${cyan} [*] Copiando custom scripts ${end}"
-    # Script para habilitar copy-paste en vmware
-    mkdir $userPath/.config/bin
-    sudo cp $current_path/scripts/copy_paste.sh $userPath/.config/bin/copy_paste.sh
-    chmod +x $userPath/.config/bin/copy_paste.sh && chown shockz:shockz $userPath/.config/bin/copy_paste.sh
 
-    # Script tty
-    sudo cp $current_path/scripts/tty.sh $userPath/.config/bin/tty.sh
-    chmod +x $userPath/.config/bin/tty.sh && chown shockz:shockz $userPath/.config/bin/tty.sh
+    # Custom Scripts
+    mkdir $userPath/.config/bin
+    sudo cp $current_path/scripts/* $userPath/.config/bin/
+    chmod +x $userPath/.config/bin/* && chown shockz:shockz $userPath/.config/bin/
 
     # tools
     echo -e "${cyan} [*] Copiando tools ${end}"
@@ -556,7 +553,14 @@ function custom(){
     sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
     rm kubectl
 
+    # Instalacion de kerbrute
+    echo -e "${cyan}[+] Descargando Kerbrute ${end}"
+    wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
+    chmod +x kerbrute_linux_amd64
+    mv kerbrute_linux_amd64 /usr/bin/kerbrute
+
     # Install cme
+    echo -e "${cyan}[+] CME ${end}"
     wget https://github.com/Porchetta-Industries/CrackMapExec/releases/download/v5.3.0/cme-ubuntu-latest-3.10.zip
     unzip cme-ubuntu-latest-3.10.zip
     chmod +x cme
@@ -564,12 +568,16 @@ function custom(){
     rm cme-ubuntu-latest-3.10.zip
 
     # Install bloodhound
+    echo -e "${cyan}[+] Descargando Bloodhound ${end}"
     sudo apt-get install neo4j bloodhound -y
+    pip install bloodhound
     
     # Extension de searchsploit
+    echo -e "${cyan}[+] Descargando searchsploit Papers ${end}"
     apt -y install exploitdb exploitdb-papers
 
     # Instalacion de pwncat
+    echo -e "${cyan}[+] Descargando pwncat ${end}"
     pip install pwncat-cs
 
     # fix locate
