@@ -4,6 +4,9 @@
 # Fix resdimensionalizacion de vmware
 #wmname LG3D 1> /dev/null &
 
+# Eliminar pitido
+sudo rmmod pcspkr
+
 # Fix cursor
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word

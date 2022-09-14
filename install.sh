@@ -586,7 +586,6 @@ function custom(){
     # quitar pitido
     sudo rmmod pcspkr
 
-
 	# Devolviendo permisos a Shockz
 	sudo chown -R shockz:shockz /home/shockz/*
 	sudo chmod +x -R  /home/shockz/*
