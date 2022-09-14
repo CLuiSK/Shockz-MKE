@@ -573,8 +573,8 @@ function custom(){
     pip install bloodhound
     
     # Extension de searchsploit
-    echo -e "${cyan}[+] Descargando searchsploit Papers ${end}"
-    apt -y install exploitdb exploitdb-papers
+    #echo -e "${cyan}[+] Descargando searchsploit Papers ${end}"
+    #apt -y install exploitdb exploitdb-papers
 
     # Instalacion de pwncat
     echo -e "${cyan}[+] Descargando pwncat ${end}"
