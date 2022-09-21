@@ -321,7 +321,7 @@ function custom(){
     sudo apt install docker.io -y
     sudo systemctl start docker
     sudo systemctl enable docker
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo curl -L "https://github.com/docker/compose/releases/download/v2.11.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 
     # Impacket
@@ -430,10 +430,6 @@ function custom(){
     while [ $? -ne 0 ]; do
         7z x Data.7z
     done
-    # BurpSuite pro/ burpbounty
-    echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
-    cp -r Data/BurpPro /opt
-    ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
 
     ###### GO TOOLS #####
     echo -e "${cyan}[+] Descargando go${end}"
@@ -463,12 +459,20 @@ function custom(){
     echo -e "${cyan}[+] Descargando ipinfo ${end}"
     go install -v github.com/ipinfo/cli/ipinfo@latest
 
+
+    echo -e "${cyan}[+] ## Copiando configuraciones ## ${end}"
+
     echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
     subfinder
 
     cd $userPath
+    # BurpSuite pro/ burpbounty
+    echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
+    cp -r Data/BurpPro /opt
+    ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
+    
     cp Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
     cp -r Data/apis/amass /home/shockz/.config/amass
     cp -r Data/apis/spiderfoot /home/shockz/.config/spiderfoot
@@ -491,6 +495,10 @@ function custom(){
     # zsteg
     echo -e "${cyan}[+] Descargando zsteg ${end}"
     gem install zsteg
+
+    # htop
+    echo -e "${cyan}[+] Descargando htop ${end}"
+    apt install htop -y
 
     # exiftool
     echo -e "${cyan}[+] Descargando exiftool ${end}"

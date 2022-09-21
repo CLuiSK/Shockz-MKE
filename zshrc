@@ -13,7 +13,6 @@ bindkey '^[[1;5C' forward-word
 
 # Fix the Java Problem
 export _JAVA_AWT_WM_NONREPARENTING=1
-
 export ROCKYOU='/usr/share/wordlists/rockyou.txt'
 
 # Enable Powerlevel10k instant prompt. Should stay at the top of ~/.zshrc.
@@ -175,6 +174,9 @@ function transfer() {
         curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) | xclip -i -sel p -f | xclip -i -sel c
 }
 
+function nuclei_ips() {
+	cat "$1" | grep "$2" | cut -d ' ' -f6 | sort | uniq
+}
 
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
 (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize

@@ -7,6 +7,7 @@ Sientete libre de aprovechar mis scripts o archivos de configuración.
 Recuerda que esta hecho para que funcione para mi user especifico así que si quieres usarlo para ti tendrás que editar muchos archivos.
 
 ## Testeado en las siguientes distribuciones de Linux:
+- Kali Linux 2022.3
 - Kali Linux 2022.1
 - Kali Linux 2021.2
 - Kali Linux 2020.4
@@ -14,7 +15,7 @@ Recuerda que esta hecho para que funcione para mi user especifico así que si qu
 ### Características que empleo en mis Kali VM's
 
 * **CPU**
-    * 4 Cores y 8 Threads/core
+    * 2 Cores y 8 Threads
 * **RAM**
     * 12GB
 * **VHD**
