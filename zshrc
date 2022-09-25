@@ -93,6 +93,10 @@ alias cme='/usr/bin/cme'
 alias server='python3 -m http.server 80 -d'
 alias smb='impacket-smbserver -smb2support shared $(pwd)'
 alias ffufz='f() { ffuf -c -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
+#allffufz http://testphp.vulnweb.com/ micro/short/nada
+alias allffufz='f() { ffuf -c -mc 200,301 -t 100 -u $1FUZZ -w /usr/share/OneListForAll/onelistforall$2.txt };f'
+alias j='OMP_NUM_THREADS=8 john --wordlist=$ROCKYOU $1'
+alias jk='OMP_NUM_THREADS=8 john --wordlist=/usr/share/wordlists/kaonashi/kaonashi14M.txt $1'
 alias recon='/home/shockz/.config/bin/recon.sh'
 
 

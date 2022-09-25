@@ -215,7 +215,7 @@ function custom(){
         sudo lftp -c "torrent $wordlist_path/kaonashi14M.7z.torrent $wordlist_path/kaonashiWPA100M.7z.torrent $wordlist_path/kaonashi.7z.torrent"
         sudo mkdir /usr/share/wordlists/kaonashi
         sudo mv  $userPath/kaonashi14M.7z  $userPath/kaonashiWPA100M.7z  $userPath/kaonashi.7z /usr/share/wordlists/kaonashi
-        cd /usr/share/wordlists/kaonashi && 7z x ./kaonashi14M.7z && 7z x ./kaonashiWPA100M.7z && 7z x ./kaonashi.7z && rm kaonashi14M.7z kaonashiWPA100M.7z kaonashi.7z
+        cd /usr/share/wordlists/kaonashi; 7z x ./kaonashi14M.7z; 7z x ./kaonashiWPA100M.7z; 7z x ./kaonashi.7z; rm kaonashi14M.7z kaonashiWPA100M.7z kaonashi.7z
         echo -e "${cyan}[+] Copiando otras wordlists ${end}"
     fi
 
@@ -351,7 +351,7 @@ function custom(){
     
     # One list for all web
     echo -e "${cyan}[+] Instalando OneList4All ${end}"
-    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7z x onelistforall.7z.001 && cd /home/shockz
+    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7za x onelistforall.txt.7z.001 && rm onelistforall.txt.7z.00* && cd /home/shockz
 
     # APKTOOL/Zipalign/jarsigner
     echo -e "${cyan}[+] Instalando Apktool/Zipalign/jarsigner ${end}"
