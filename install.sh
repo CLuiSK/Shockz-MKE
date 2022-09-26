@@ -182,6 +182,19 @@ function custom(){
     sudo cp $current_path/scripts/* $userPath/.config/bin/
     chmod +x $userPath/.config/bin/* && chown shockz:shockz $userPath/.config/bin/
 
+
+    echo -e "${cyan} [*] Copiando custom nuclei templates ${end}"
+    go install -v github.com/xm1k3/cent@latest
+    cent init
+    cp $current_path/config_/.cent.yaml /root/
+    cent -p custom-nuclei-templates
+
+    echo -e "${cyan} [*] Copiando mobile nuclei templates ${end}"
+    git clone https://github.com/optiv/mobile-nuclei-templates.git
+    cd mobile-nuclei-templates 
+    find . -type f -not -name '*.yaml' -delete
+    cd -
+
     # tools
     echo -e "${cyan} [*] Copiando tools ${end}"
     7z x $current_path/tools.zip -o$userPath
