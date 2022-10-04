@@ -188,6 +188,8 @@ function custom(){
     cent init
     cp $current_path/config_/.cent.yaml /root/
     cent -p custom-nuclei-templates
+    cd custom-nuclei-templates && rm *dos*
+    cd -
 
     echo -e "${cyan} [*] Copiando mobile nuclei templates ${end}"
     git clone https://github.com/optiv/mobile-nuclei-templates.git
