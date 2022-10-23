@@ -248,6 +248,9 @@ function custom(){
     # wifite
     # dos2unix
 
+    echo -e "${cyan}[+] Instalando fuck ${end}"
+    pip3 install thefuck --user
+
     echo -e "${cyan}[+] Instalando pip2 ${end}"
     sudo apt install python-pip -y
 
@@ -323,6 +326,11 @@ function custom(){
     # Sudo sin requerir passwd
     echo -e "${cyan}[+] Instalando grantroot ${end}"
     apt-get install kali-grant-root && dpkg-reconfigure kali-grant-root
+
+    # MOBSF
+    #docker pull opensecurity/mobile-security-framework-mobsf
+    #docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+    #https://stackoverflow.com/questions/39828185/no-internet-connection-inside-docker-containers
 
     # AWS Cli
     echo -e "${cyan}[+] Instalando aws cli ${end}"

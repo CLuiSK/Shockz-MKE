@@ -11,6 +11,8 @@ sudo rmmod pcspkr
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
+eval $(thefuck --alias)
+
 # Fix the Java Problem
 export _JAVA_AWT_WM_NONREPARENTING=1
 export ROCKYOU='/usr/share/wordlists/rockyou.txt'
