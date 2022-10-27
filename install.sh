@@ -327,6 +327,10 @@ function custom(){
     echo -e "${cyan}[+] Instalando grantroot ${end}"
     apt-get install kali-grant-root && dpkg-reconfigure kali-grant-root
 
+    # olevba
+    echo -e "${cyan}[+] Instalando olevba ${end}"
+    sudo -H pip3 install -U oletools
+
     # MOBSF
     #docker pull opensecurity/mobile-security-framework-mobsf
     #docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest

@@ -39,7 +39,7 @@ sudo su
 **2)** Clonamos el repositorio, damos permisos de ejecución al archivo install.sh y lo ejecutamos
 
 ```
-git clone https://github.com/jmlgomez73/Shockz-MKE && cd Shockz-MKE && chmod +x install.sh && ./install.sh
+git clone https://github.com/shockz-offsec/Shockz-MKE && cd Shockz-MKE && chmod +x install.sh && ./install.sh
 ```
 **3)** Reinciar y seleccionar como lanzador bspwm
 
