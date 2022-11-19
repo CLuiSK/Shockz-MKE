@@ -317,6 +317,16 @@ function custom(){
     # Instalacion audacity    
     sudo apt install audacity -y
 
+    # Instalacion 2to3
+    echo -e "${cyan}[+] Instalando 2to3 ${end}"
+    pip install 2to3
+
+    # Tools auditoria movil
+    echo -e "${cyan}[+] Instalando tools para auditoria movil ${end}"
+    apt install android-tools-adb -y
+    pip3 install frida-tools
+    pip3 install objection
+    wget "https://gist.githubusercontent.com/akabe1/5632cbc1cd49f0237cbd0a93bc8e4452/raw/531e9aa33eb16302ac683a7a83e5b5d7dcf9ab30/frida_multiple_unpinning.js" -P /home/shockz/mobile/
 
     # Instalacion de scrot
     echo -e "${cyan}[+] Instalando scrot ${end}"
