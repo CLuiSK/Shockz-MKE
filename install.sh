@@ -428,6 +428,16 @@ function custom(){
     echo -e "${cyan}[+] Instalando shcheck ${end}"
     pip3 install shcheck
 
+    # wwwtree.py
+    echo -e "${cyan}[+] Instalando wwwtree ${end}"
+    git clone https://github.com/t3l3machus/wwwtree.git
+    cd wwwtree
+    pip install -r requirements.txt
+    chmod +x wwwtree.py
+    mv wwwtree.py /usr/local/bin
+    cd -
+    rm -r wwwtree
+
     # testssl
     echo -e "${cyan}[+] Instalando testssl ${end}"
     sudo apt install testssl.sh -y
@@ -461,7 +471,7 @@ function custom(){
     echo -e "${cyan}[+] Instalando Megatools ${end}"
     sudo apt install megatools -y
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
-    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvQUJCaWhKaUIjdlFtYUFTZGJUTnNQSlA1ajlodVpMSGQyc2g0VV9wZU54MTFsc0QwVkNnWQo=" | base64 -d)
+    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUlaMDJLUVkjQ0pJV3hGZV9EektZNnRsbk5mOC04RmtGYm54bmk2akNmZVo2MlJnLW0tTQ==" | base64 -d)
     sudo apt install p7zip-full -y
     cd $userPath
     while [ $? -ne 0 ]; do
@@ -515,6 +525,9 @@ function custom(){
     cp -r Data/apis/spiderfoot /home/shockz/.config/spiderfoot
     cp Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
     cp Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
+    cp Data/apis/h8mail_config.ini /home/shockz/Tools/h8mail_config.ini
+    cp Data/apis/.github_tokens /home/shockz/Tools/.github_tokens
+    cp Data/apis/theHarvester/api-keys.yaml /home/shockz/Tools/theHarvester/api-keys.yaml
 
     echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
@@ -584,13 +597,6 @@ function custom(){
     wget https://github.com/sharkdp/hyperfine/releases/download/v1.13.0/hyperfine_1.13.0_amd64.deb
     sudo dpkg -i hyperfine_1.13.0_amd64.deb
     rm hyperfine_1.13.0_amd64.deb
-
-    # Udork
-    echo -e "${cyan}[+] Descargando uDork ${end}"
-    git clone https://github.com/m3n0sd0n4ld/uDork
-    chmod +x uDork/uDork.sh
-    filename=$(cat Data/apis/uDork)
-    sed -ie "s/cookies=\"c_user=HEREYOUCOOKIE; xs=HEREYOUCOOKIE;\"/${filename}/g" uDork/uDork.sh
 
     # Instalacion de kubctl
     echo -e "${cyan}[+] Descargando Kubectl ${end}"

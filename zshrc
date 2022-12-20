@@ -90,9 +90,9 @@ alias autorecon='python3 /usr/bin/AutoRecon/autorecon.py'
 alias nports='nmap -p- --open -sS --min-rate 2000 -vvv -n -Pn -oG allPorts'
 alias nserv='nmap -sS -A --min-rate 2000 -vvv -n -Pn -oG targetered'
 alias burpro='java -javaagent:/opt/BurpPro/BurpSuiteLoader_v2021.12.1.jar -noverify -jar /opt/BurpPro/burpsuite_pro_v2021.12.1.jar'
-alias spiderfoot='python3 /opt/spiderfoot/sf.py -l 127.0.0.1:5001'
 alias cme='/usr/bin/cme'
 alias server='python3 -m http.server 80 -d'
+alias servert='/usr/local/bin/wwwtree.py -r'
 alias smb='impacket-smbserver -smb2support shared $(pwd)'
 alias ffufz='f() { ffuf -c -r -ic -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
 #allffufz http://testphp.vulnweb.com/ micro/short/nada
@@ -182,7 +182,7 @@ function transfer() {
 }
 
 function nuclei_ips() {
-	cat "$1" | grep "$2" | cut -d ' ' -f6 | sort | uniq
+	cat "$1" | grep "$2" | cut -d ' ' -f4 | sort | uniq
 }
 
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
