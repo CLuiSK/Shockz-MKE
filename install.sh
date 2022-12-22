@@ -498,6 +498,18 @@ function custom(){
     su shockz -c "./install.sh"
     cd -
 
+    echo -e "${cyan}[+] Instalando sublist3r ${end}"
+    git clone https://github.com/aboul3la/Sublist3r.git
+    cd Sublist3r
+    sudo pip install -r requirements.txt
+    cd -
+
+    echo -e "${cyan}[+] Instalando assetfinder ${end}"
+    go get -u github.com/tomnomnom/assetfinder
+
+    echo -e "${cyan}[+] Instalando Subjack ${end}"
+    go get github.com/haccer/subjack
+
     # subfinder
     echo -e "${cyan}[+] Instalando Subfinder ${end}"
     go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
