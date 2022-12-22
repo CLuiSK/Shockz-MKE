@@ -471,7 +471,7 @@ function custom(){
     echo -e "${cyan}[+] Instalando Megatools ${end}"
     sudo apt install megatools -y
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
-    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvWUlaMDJLUVkjQ0pJV3hGZV9EektZNnRsbk5mOC04RmtGYm54bmk2akNmZVo2MlJnLW0tTQ==" | base64 -d)
+    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvTUZCaGtEeGIjdkVtUkFTNWF2SXZ2SVd1RXFCaWc5TUxxX2R3RE9zLVZnRXpEU016dmZGNAo=" | base64 -d)
     sudo apt install p7zip-full -y
     cd $userPath
     while [ $? -ne 0 ]; do
@@ -523,7 +523,6 @@ function custom(){
     cp Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
     cp -r Data/apis/amass /home/shockz/.config/amass
     cp -r Data/apis/spiderfoot /home/shockz/.config/spiderfoot
-    cp Data/apis/api-keys.yaml /etc/theHarvester/api-keys.yaml
     cp Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
     cp Data/apis/h8mail_config.ini /home/shockz/Tools/h8mail_config.ini
     cp Data/apis/.github_tokens /home/shockz/Tools/.github_tokens

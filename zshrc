@@ -93,10 +93,11 @@ alias burpro='java -javaagent:/opt/BurpPro/BurpSuiteLoader_v2021.12.1.jar -nover
 alias cme='/usr/bin/cme'
 alias server='python3 -m http.server 80 -d'
 alias servert='/usr/local/bin/wwwtree.py -r'
+alias spiderfoot='cd /opt/spiderfoot/ && python3 ./sf.py -l 127.0.0.1:5001'
 alias smb='impacket-smbserver -smb2support shared $(pwd)'
-alias ffufz='f() { ffuf -c -r -ic -mc 200,301 -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
+alias ffufz='f() { ffuf -mc all -fc 404 -ac -sf -s -c -ic -r -u $1FUZZ -w /usr/share/seclists/Discovery/Web-Content/directory-list-lowercase-2.3-medium.txt -t 100 -e .php,.html,.txt -recursion };f'
 #allffufz http://testphp.vulnweb.com/ micro/short/nada
-alias allffufz='f() { ffuf -r -c -ic -mc 200,301 -t 100 -u $1FUZZ -w /usr/share/OneListForAll/onelistforall$2.txt };f'
+alias allffufz='f() { ffuf  -mc all -fc 404 -ac -sf -s -c -ic -r -t 100 -u $1FUZZ -w /usr/share/OneListForAll/onelistforall$2.txt };f'
 alias j='OMP_NUM_THREADS=8 john --wordlist=$ROCKYOU $1'
 alias jk='OMP_NUM_THREADS=8 john --wordlist=/usr/share/wordlists/kaonashi/kaonashi14M.txt $1'
 alias recon='/home/shockz/.config/bin/recon.sh'
