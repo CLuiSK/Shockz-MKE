@@ -646,7 +646,7 @@ function custom(){
     sudo updatedb
 
     # quitar pitido
-    sudo rmmod pcspkr
+    sudo rmmod pcspkr ; sudo echo "blacklist pcspkr" >>/etc/modprobe.d/blacklist.conf
 
 	# Devolviendo permisos a Shockz
 	sudo chown -R shockz:shockz /home/shockz/*

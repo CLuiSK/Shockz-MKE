@@ -5,7 +5,7 @@
 #wmname LG3D 1> /dev/null &
 
 # Eliminar pitido
-sudo rmmod pcspkr
+#sudo rmmod pcspkr
 
 # Fix cursor
 bindkey '^[[1;5D' backward-word
