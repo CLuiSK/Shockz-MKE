@@ -461,6 +461,10 @@ function custom(){
     echo -e "${cyan}[+] Instalando Prips ${end}"
     git clone https://github.com/honzahommer/prips.sh.git && prips.sh/install.sh /usr/local && sudo rm -r prips.sh
 
+    # baobab
+    echo -e "${cyan}[+] Instalando Baobab ${end}"
+    sudo apt-get install baobab -y
+
     ##Spiderfoot
     echo -e "${cyan}[+] Instalando Spiderfoot ${end}"
     git clone https://github.com/smicallef/spiderfoot.git
@@ -495,6 +499,7 @@ function custom(){
     cd /home/shockz
     git clone https://github.com/six2dez/reconftw.git
     cd reconftw/
+    echo "shockz ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/reconFTW
     su shockz -c "./install.sh"
     cd -
 
@@ -508,7 +513,7 @@ function custom(){
     go get -u github.com/tomnomnom/assetfinder
 
     echo -e "${cyan}[+] Instalando Subjack ${end}"
-    go get github.com/haccer/subjack
+    sudo apt install subjack -y
 
     # subfinder
     echo -e "${cyan}[+] Instalando Subfinder ${end}"
