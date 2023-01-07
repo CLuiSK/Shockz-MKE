@@ -182,14 +182,16 @@ function custom(){
     sudo cp $current_path/scripts/* $userPath/.config/bin/
     chmod +x $userPath/.config/bin/* && chown shockz:shockz $userPath/.config/bin/
 
+    # Custom nuclei templates
+    cp $current_path/custom.zip $userPath/custom.zip
+    unzip $userPath/custom.zip && rm $userPath/custom.zip
 
-    echo -e "${cyan} [*] Copiando custom nuclei templates ${end}"
-    go install -v github.com/xm1k3/cent@latest
-    cent init
-    cp $current_path/config_/.cent.yaml /root/
-    cent -p custom-nuclei-templates
-    cd custom-nuclei-templates && rm *dos*
-    cd -
+    # echo -e "${cyan} [*] Copiando custom nuclei templates ${end}"
+    # go install -v github.com/xm1k3/cent@latest
+    # cent init
+    # cent -p custom-nuclei-templates
+    # cd custom-nuclei-templates && rm *dos*
+    # cd -
 
     echo -e "${cyan} [*] Copiando mobile nuclei templates ${end}"
     git clone https://github.com/optiv/mobile-nuclei-templates.git
@@ -400,6 +402,14 @@ function custom(){
     echo -e "${cyan}[+] Instalando ysoserial ${end}"
     wget https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar && mkdir /opt/ysoserial && mv ysoserial-master-SNAPSHOT.jar /opt/ysoserial/ysoserial.jar
 
+    # OneForAll
+    cd $userPath
+    git clone https://gitee.com/shmilylty/OneForAll.git
+    cd OneForAll/
+    python3 -m pip install -U pip setuptools wheel
+    pip3 install -r requirements.txt
+
+
 	# RLWRAP
     echo -e "${cyan}[+] Instalando rlwrap ${end}"
 	sudo apt install rlwrap -y
@@ -475,7 +485,7 @@ function custom(){
     echo -e "${cyan}[+] Instalando Megatools ${end}"
     sudo apt install megatools -y
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
-    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvTUZCaGtEeGIjdkVtUkFTNWF2SXZ2SVd1RXFCaWc5TUxxX2R3RE9zLVZnRXpEU016dmZGNAo=" | base64 -d)
+    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvdElveHpCQVMjLVZCSjJXeG94b3V1d29LUHk4Yjl0b3AwOUhHSE0xczNsczRpa0tkS1BDSQ==" | base64 -d)
     sudo apt install p7zip-full -y
     cd $userPath
     while [ $? -ne 0 ]; do
@@ -544,6 +554,7 @@ function custom(){
     cp Data/apis/h8mail_config.ini /home/shockz/Tools/h8mail_config.ini
     cp Data/apis/.github_tokens /home/shockz/Tools/.github_tokens
     cp Data/apis/theHarvester/api-keys.yaml /home/shockz/Tools/theHarvester/api-keys.yaml
+    cp Data/apis/oneforall/api.py /home/shockz/OneForAll/config/api.py
 
     echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
@@ -583,11 +594,7 @@ function custom(){
 
     # naabu
     echo -e "${cyan}[+] Descargando naabu ${end}"
-    wget https://github.com/projectdiscovery/naabu/releases/download/v2.0.5/naabu_2.0.5_linux_amd64.zip
-    unzip naabu_2.0.5_linux_amd64.zip
-    chmod +x naabu
-    sudo mv naabu /usr/local/bin/ 
-    sudo rm naabu_2.0.5_linux_amd64.zip
+    go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
     # findomain
     echo -e "${cyan}[+] Descargando findomain ${end}"
