@@ -199,6 +199,9 @@ function custom(){
     find . -type f -not -name '*.yaml' -delete
     cd -
 
+    echo -e "${cyan} [*] Descargando nuclei fuzzing templates ${end}"
+    git clone https://github.com/projectdiscovery/fuzzing-templates.git
+
     # tools
     echo -e "${cyan} [*] Copiando tools ${end}"
     7z x $current_path/tools.zip -o$userPath
@@ -485,12 +488,27 @@ function custom(){
     echo -e "${cyan}[+] Instalando Megatools ${end}"
     sudo apt install megatools -y
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
-    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvdElveHpCQVMjLVZCSjJXeG94b3V1d29LUHk4Yjl0b3AwOUhHSE0xczNsczRpa0tkS1BDSQ==" | base64 -d)
+    megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvSUFRd1haYUsjOHRrdjNQbEl1OFB2LV9zc3V3OHRPcExFd0xRMXpvMDJsTllQZUd4UmRzUQ==" | base64 -d)
     sudo apt install p7zip-full -y
     cd $userPath
     while [ $? -ne 0 ]; do
         7z x Data.7z
     done
+
+    echo -e "${cyan}[+] Instalando Sudomy ${end}"
+    cd $userPath
+    git clone --recursive https://github.com/screetsec/Sudomy.git
+    cd Sudomy
+    python3 -m pip install -r requirements.txt
+    apt-get install jq nmap npm chromium parallel -y
+    npm i -g wappalyzer wscat
+    cd -
+
+    echo -e "${cyan}[+] Instalando jhf ${end}"
+    cd $userPath
+    git clone https://github.com/jackrendor/jhf.git
+    python3 -m pip install -r jhf/requirements.txt
+    cd -
 
     ###### GO TOOLS #####
     echo -e "${cyan}[+] Descargando go${end}"
@@ -539,7 +557,7 @@ function custom(){
     echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
-    subfinder
+    su shockz -c "subfinder"
 
     cd $userPath
     # BurpSuite pro/ burpbounty
@@ -547,7 +565,7 @@ function custom(){
     cp -r Data/BurpPro /opt
     ##dump in /opt, follow txt, open burp, open activator, copy license from activator, and manual activate, copy and paste.
     
-    cp Data/apis/subfinder.yaml /root/.config/subfinder/provider-config.yaml
+    cp Data/apis/subfinder.yaml /home/shockz/.config/subfinder/provider-config.yaml
     cp -r Data/apis/amass /home/shockz/.config/amass
     cp -r Data/apis/spiderfoot /home/shockz/.config/spiderfoot
     cp Data/apis/reconftw.cfg /home/shockz/reconftw/reconftw.cfg
@@ -555,6 +573,7 @@ function custom(){
     cp Data/apis/.github_tokens /home/shockz/Tools/.github_tokens
     cp Data/apis/theHarvester/api-keys.yaml /home/shockz/Tools/theHarvester/api-keys.yaml
     cp Data/apis/oneforall/api.py /home/shockz/OneForAll/config/api.py
+    cp Data/apis/sudomy.api /home/shockz/Sudomy/sudomy.api
 
     echo -e "${cyan}[+] Instalando freq,airixss,gau ${end}"
     go install -v github.com/takshal/freq@latest
@@ -595,13 +614,6 @@ function custom(){
     # naabu
     echo -e "${cyan}[+] Descargando naabu ${end}"
     go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-
-    # findomain
-    echo -e "${cyan}[+] Descargando findomain ${end}"
-    wget https://github.com/findomain/findomain/releases/latest/download/findomain-linux
-    chmod +x findomain-linux
-    mv findomain-linux findomain
-    sudo mv findomain /usr/local/bin/
 
     # proFTPd
     echo -e "${cyan}[+] Descargando proFTPd ${end}"
