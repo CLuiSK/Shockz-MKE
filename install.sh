@@ -583,11 +583,6 @@ function custom(){
     echo -e "${cyan}[+] Instalando uro ${end}"
     sudo pip3 install uro
 
-    # nuclei burp
-    echo -e "${cyan}[+] Descargando nuclei burp ${end}"
-    wget https://github.com/projectdiscovery/nuclei-burp-plugin/releases/download/v1.0.0-rc1/nuclei-burp-plugin-1.0.0-rc1.jar
-    sudo mv nuclei-burp-plugin-1.0.0-rc1.jar /opt/BurpPro/nuclei_burp.jar
-
     # zsteg
     echo -e "${cyan}[+] Descargando zsteg ${end}"
     gem install zsteg

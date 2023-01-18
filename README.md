@@ -19,13 +19,13 @@ Recuerda que esta hecho para que funcione para mi user especifico así que si qu
 * **RAM**
     * 12GB
 * **VHD**
-    * 90 GB
+    * 110 GB
 * **Particiones**
     * Primaria
       * / = 50 GB
     * Lógica
-      * /home = 20 GB
-      * /var = 15 GB
+      * /home = 30 GB
+      * /var = 25 GB
       * /swap = 5 GB
 
 ## Instalación:
