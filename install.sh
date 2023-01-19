@@ -512,7 +512,6 @@ function custom(){
     echo -e "${cyan}[+] Instalando jhf ${end}"
     git clone https://github.com/jackrendor/jhf.git
     python3 -m pip install -r jhf/requirements.txt
-    cd -
 
     ###### GO TOOLS #####
     echo -e "${cyan}[+] Descargando go${end}"
@@ -557,6 +556,8 @@ function custom(){
     echo -e "${cyan}[+] ## Copiando configuraciones ## ${end}"
 
     echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
+    cd $userPath
+    
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
     su shockz -c "subfinder"
