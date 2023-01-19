@@ -194,6 +194,7 @@ function custom(){
     # cd -
 
     echo -e "${cyan} [*] Copiando mobile nuclei templates ${end}"
+    cd $userPath
     git clone https://github.com/optiv/mobile-nuclei-templates.git
     cd mobile-nuclei-templates 
     find . -type f -not -name '*.yaml' -delete
@@ -300,12 +301,13 @@ function custom(){
     sudo apt-get install shellcheck -y
 
     # Instalacion autorecon
-    cd /usr/bin && sudo git clone https://github.com/Tib3rius/AutoRecon && cd -
+    sudo git clone https://github.com/Tib3rius/AutoRecon
     ## Dependencias
     sudo apt install feroxbuster gobuster nbtscan oscanner redis-tools snmp sslscan sipvicious tnscmd10g wkhtmltopdf -y
 
     echo -e "${cyan}[+] Instalando rustscan ${end}"
     # Instalacion de rustscan
+    cd $userPath
     wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb
     sudo dpkg -i rustscan_2.0.1_amd64.deb
     rm rustscan_2.0.1_amd64.deb
@@ -393,7 +395,8 @@ function custom(){
     
     # One list for all web
     echo -e "${cyan}[+] Instalando OneList4All ${end}"
-    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7za x onelistforall.txt.7z.001 && rm onelistforall.txt.7z.00* && cd /home/shockz
+    cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7za x onelistforall.txt.7z.001 && rm onelistforall.txt.7z.00*
+    $userPath
 
     # APKTOOL/Zipalign/jarsigner
     echo -e "${cyan}[+] Instalando Apktool/Zipalign/jarsigner ${end}"
@@ -406,12 +409,11 @@ function custom(){
     wget https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar && mkdir /opt/ysoserial && mv ysoserial-master-SNAPSHOT.jar /opt/ysoserial/ysoserial.jar
 
     # OneForAll
-    cd $userPath
     git clone https://gitee.com/shmilylty/OneForAll.git
     cd OneForAll/
     python3 -m pip install -U pip setuptools wheel
     pip3 install -r requirements.txt
-
+    cd -
 
 	# RLWRAP
     echo -e "${cyan}[+] Instalando rlwrap ${end}"
@@ -488,15 +490,14 @@ function custom(){
     echo -e "${cyan}[+] Instalando Megatools ${end}"
     sudo apt install megatools -y
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
+    cd $userPath
     megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvSUFRd1haYUsjOHRrdjNQbEl1OFB2LV9zc3V3OHRPcExFd0xRMXpvMDJsTllQZUd4UmRzUQ==" | base64 -d)
     sudo apt install p7zip-full -y
-    cd $userPath
     while [ $? -ne 0 ]; do
         7z x Data.7z
     done
 
     echo -e "${cyan}[+] Instalando Sudomy ${end}"
-    cd $userPath
     git clone --recursive https://github.com/screetsec/Sudomy.git
     cd Sudomy
     python3 -m pip install -r requirements.txt
@@ -505,7 +506,6 @@ function custom(){
     cd -
 
     echo -e "${cyan}[+] Instalando jhf ${end}"
-    cd $userPath
     git clone https://github.com/jackrendor/jhf.git
     python3 -m pip install -r jhf/requirements.txt
     cd -
@@ -524,7 +524,6 @@ function custom(){
 
     # reconftw y multiples tools de go para bugbounty
     echo -e "${cyan}[+] Descargando reconftw y multiples tools de go para bugbounty${end}"
-    cd /home/shockz
     git clone https://github.com/six2dez/reconftw.git
     cd reconftw/
     echo "shockz ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/reconFTW
@@ -551,7 +550,6 @@ function custom(){
     echo -e "${cyan}[+] Descargando ipinfo ${end}"
     go install -v github.com/ipinfo/cli/ipinfo@latest
 
-
     echo -e "${cyan}[+] ## Copiando configuraciones ## ${end}"
 
     echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
@@ -559,7 +557,6 @@ function custom(){
     # mover subfinder api
     su shockz -c "subfinder"
 
-    cd $userPath
     # BurpSuite pro/ burpbounty
     echo -e "${cyan}[+] Instalando Burpsuite Pro & BurpBounty ${end}"
     cp -r Data/BurpPro /opt
@@ -675,7 +672,7 @@ function custom(){
     echo -e "${cyan}[+] Limpiando... ${end}"
     # Limpieza de directorios
     sudo rm -r $userPath/Descargas/*
-    sudo rm -r Data*
+    sudo rm Data.7z
 }
 
 
