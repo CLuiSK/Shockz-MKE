@@ -487,14 +487,18 @@ function custom(){
     mv spiderfoot /opt/
 
     # MEGA TOOLS
-    echo -e "${cyan}[+] Instalando Megatools ${end}"
+    echo -e "${cyan}[+] Instalando Megatools y p7zip-full ${end}"
     sudo apt install megatools -y
+    sudo apt install p7zip-full -y
     echo -e "${cyan}[+] Descomprimiendo data ${end}"
     cd $userPath
     megadl --path . $(echo "aHR0cHM6Ly9tZWdhLm56L2ZpbGUvSUFRd1haYUsjOHRrdjNQbEl1OFB2LV9zc3V3OHRPcExFd0xRMXpvMDJsTllQZUd4UmRzUQ==" | base64 -d)
-    sudo apt install p7zip-full -y
-    while [ $? -ne 0 ]; do
-        7z x Data.7z
+    while true; do
+        read -s -p "Ingresa la contraseña para descomprimir Data.7z: " password
+        7z x -p$password Data.7z
+        if [ $? -eq 0 ]; then
+            break
+        fi
     done
 
     echo -e "${cyan}[+] Instalando Sudomy ${end}"
