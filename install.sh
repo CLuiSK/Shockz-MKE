@@ -254,9 +254,6 @@ function custom(){
     # wifite
     # dos2unix
 
-    echo -e "${cyan}[+] Instalando fuck ${end}"
-    pip3 install thefuck --user
-
     echo -e "${cyan}[+] Instalando pip2 ${end}"
     sudo apt install python-pip -y
 
@@ -396,7 +393,7 @@ function custom(){
     # One list for all web
     echo -e "${cyan}[+] Instalando OneList4All ${end}"
     cd /usr/share/ && sudo git clone https://github.com/six2dez/OneListForAll && cd OneListForAll && 7za x onelistforall.txt.7z.001 && rm onelistforall.txt.7z.00*
-    $userPath
+    cd $userPath
 
     # APKTOOL/Zipalign/jarsigner
     echo -e "${cyan}[+] Instalando Apktool/Zipalign/jarsigner ${end}"
@@ -409,6 +406,7 @@ function custom(){
     wget https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar && mkdir /opt/ysoserial && mv ysoserial-master-SNAPSHOT.jar /opt/ysoserial/ysoserial.jar
 
     # OneForAll
+    echo -e "${cyan}[+] Instalando OneForAll ${end}"
     git clone https://gitee.com/shmilylty/OneForAll.git
     cd OneForAll/
     python3 -m pip install -U pip setuptools wheel
@@ -557,7 +555,7 @@ function custom(){
 
     echo -e "${cyan}[+] Configurando apis de subfinder, amass y spiderfoot y ysoserial txt ${end}"
     cd $userPath
-    
+
     mv Data/ysoserial_payloaders /opt
     # mover subfinder api
     su shockz -c "subfinder"
