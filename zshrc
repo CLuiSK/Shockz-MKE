@@ -101,6 +101,7 @@ alias j='OMP_NUM_THREADS=8 john --wordlist=$ROCKYOU $1'
 alias jk='OMP_NUM_THREADS=8 john --wordlist=/usr/share/wordlists/kaonashi/kaonashi14M.txt $1'
 alias recon='/home/shockz/.config/bin/recon.sh'
 alias shell='rlwrap -cAr nc -lvp $1'
+alias sel='xclip -i -sel p -f | xclip -i -sel c'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
